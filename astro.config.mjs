@@ -9,7 +9,8 @@ export default defineConfig({
   output: 'server',
   adapter: vercel({
     analytics: true,
-    runtime: 'nodejs18.x'
+    includeFiles: ['./dist/**'],
+    functionPerRoute: false
   }),
   image: {
     service: {
