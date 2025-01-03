@@ -147,63 +147,48 @@ const projects = [
     const buttons = document.querySelectorAll('.category-btn');
     const projects = document.querySelectorAll('.project-item');
     let currentCategory = 'all';
-    let isAnimating = false;
 
     function filterProjects(category) {
-      if (category === currentCategory || isAnimating) return;
-      isAnimating = true;
+      if (category === currentCategory) return;
 
-      // Update button states immediately
+      // Update button states
       buttons.forEach(btn => {
         btn.setAttribute('aria-selected', btn.dataset.category === category ? 'true' : 'false');
       });
 
-      // Fast transition for all projects
+      // Use CSS Grid animation for smoother transitions
       requestAnimationFrame(() => {
-        const relevantProjects = Array.from(projects).filter(project => 
-          category === 'all' || project.dataset.category === category
-        );
-
-        // Hide all projects quickly
         projects.forEach(project => {
-          project.style.opacity = '0';
-          project.style.transform = 'translateY(10px)';
+          const shouldShow = category === 'all' || project.dataset.category === category;
+          if (shouldShow) {
+            project.style.display = 'block';
+            requestAnimationFrame(() => {
+              project.style.opacity = '1';
+              project.style.transform = 'translateY(0)';
+            });
+          } else {
+            project.style.opacity = '0';
+            project.style.transform = 'translateY(10px)';
+            setTimeout(() => {
+              project.style.display = 'none';
+            }, 200);
+          }
         });
-
-        // Show relevant projects after a very short delay
-        setTimeout(() => {
-          projects.forEach(project => {
-            const shouldShow = category === 'all' || project.dataset.category === category;
-            project.style.display = shouldShow ? 'block' : 'none';
-          });
-
-          // Immediately show relevant projects
-          relevantProjects.forEach(project => {
-            project.style.opacity = '1';
-            project.style.transform = 'translateY(0)';
-          });
-
-          isAnimating = false;
-        }, 150); // Reduced timing for faster transitions
       });
 
       currentCategory = category;
     }
 
-    // Add click handlers
     buttons.forEach(button => {
       button.addEventListener('click', () => {
-        if (!isAnimating) {
-          filterProjects(button.dataset.category);
-        }
+        filterProjects(button.dataset.category);
       });
     });
 
-    // Initialize with 'all' category
+    // Initialize
     filterProjects('all');
   }
 
-  // Setup on page load
   document.addEventListener('astro:page-load', setupProjectFiltering);
 </script>
 

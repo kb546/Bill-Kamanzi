@@ -10,6 +10,15 @@
       ]
     },
     {
+      "source": "/images/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
       "source": "/(.*)",
       "headers": [
         {
@@ -23,9 +32,18 @@
         {
           "key": "X-XSS-Protection",
           "value": "1; mode=block"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
         }
       ]
     }
   ],
-  "compress": true
+  "compress": true,
+  "images": {
+    "sizes": [640, 750, 828, 1080, 1200],
+    "domains": ["images.unsplash.com"],
+    "minimumCacheTTL": 60
+  }
 } 

@@ -13,6 +13,21 @@ export default defineConfig({
       entrypoint: 'astro/assets/services/sharp'
     },
     domains: ['images.unsplash.com'],
-    remotePatterns: [{ protocol: "https" }]
+    remotePatterns: [{ protocol: "https" }],
+    format: ['webp', 'avif'],
+    quality: 80
+  },
+  vite: {
+    build: {
+      cssMinify: true,
+      minify: true,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'critical': ['./src/components/Header.astro', './src/components/Footer.astro']
+          }
+        }
+      }
+    }
   }
 });
