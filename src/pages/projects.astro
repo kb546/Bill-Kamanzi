@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import ProjectCard from '../components/cards/ProjectCard.astro';
 
-// Define categories with proper ordering
+// Define categories
 const categories = [
   { id: 'all', name: 'All Projects', icon: '📂' },
   { id: 'data-analysis', name: 'Data Analysis', icon: '📊' },
@@ -11,7 +11,6 @@ const categories = [
   { id: 'system-admin', name: 'System Administration', icon: '⚙️' }
 ];
 
-// Group projects by category for better organization
 const projects = [
   {
     "title": "SpaceX Falcon 9 Landing Prediction",
@@ -94,13 +93,7 @@ const projects = [
     "liveUrl": "https://github.com/kb546/System-Administration-Project",
     "category": "system-admin"
   }
-].sort((a, b) => {
-  // Ensure consistent ordering within categories
-  if (a.category === b.category) {
-    return a.title.localeCompare(b.title);
-  }
-  return a.category.localeCompare(b.category);
-});
+].sort((a, b) => a.category.localeCompare(b.category));
 ---
 
 <Layout title="Projects - Bill Kamanzi">
@@ -121,7 +114,7 @@ const projects = [
               class="category-btn px-4 py-2 rounded-lg text-sm font-medium
                      bg-white border border-gray-200 shadow-sm
                      hover:border-primary-200 hover:bg-primary-50/40
-                     transition-all duration-300 ease-in-out"
+                     transition-colors duration-200"
               data-category={category.id}
               aria-selected={category.id === 'all'}
             >
@@ -134,12 +127,11 @@ const projects = [
         </div>
 
         <!-- Projects Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
-          {projects.map((project, index) => (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map(project => (
             <div 
-              class="project-card opacity-0 transform translate-y-4" 
+              class="project-item transition-all duration-300 ease-in-out"
               data-category={project.category}
-              style={`transition-delay: ${index * 50}ms`}
             >
               <ProjectCard {...project} />
             </div>
@@ -153,85 +145,89 @@ const projects = [
 <script>
   function setupProjectFiltering() {
     const buttons = document.querySelectorAll('.category-btn');
-    const projectCards = document.querySelectorAll('.project-card');
+    const projects = document.querySelectorAll('.project-item');
     let currentCategory = 'all';
+    let isAnimating = false;
 
-    function animateCards(show = true) {
-      projectCards.forEach((card, index) => {
+    function filterProjects(category) {
+      if (category === currentCategory || isAnimating) return;
+      isAnimating = true;
+
+      // Update button states immediately
+      buttons.forEach(btn => {
+        btn.setAttribute('aria-selected', btn.dataset.category === category ? 'true' : 'false');
+      });
+
+      // Fast transition for all projects
+      requestAnimationFrame(() => {
+        const relevantProjects = Array.from(projects).filter(project => 
+          category === 'all' || project.dataset.category === category
+        );
+
+        // Hide all projects quickly
+        projects.forEach(project => {
+          project.style.opacity = '0';
+          project.style.transform = 'translateY(10px)';
+        });
+
+        // Show relevant projects after a very short delay
         setTimeout(() => {
-          if (show) {
-            card.classList.remove('opacity-0', 'translate-y-4');
-          } else {
-            card.classList.add('opacity-0', 'translate-y-4');
-          }
-        }, index * 50);
-      });
-    }
-
-    function filterProjects(category: string) {
-      if (category === currentCategory) return;
-      
-      currentCategory = category;
-      
-      // First, fade out all cards
-      projectCards.forEach(card => {
-        card.classList.add('opacity-0', 'translate-y-4');
-      });
-
-      // Wait for fade out animation
-      setTimeout(() => {
-        projectCards.forEach(card => {
-          const shouldShow = category === 'all' || card.dataset.category === category;
-          card.classList.toggle('hidden', !shouldShow);
-        });
-
-        // Then fade in visible cards with stagger
-        requestAnimationFrame(() => {
-          const visibleCards = document.querySelectorAll('.project-card:not(.hidden)');
-          visibleCards.forEach((card, index) => {
-            setTimeout(() => {
-              card.classList.remove('opacity-0', 'translate-y-4');
-            }, index * 50);
+          projects.forEach(project => {
+            const shouldShow = category === 'all' || project.dataset.category === category;
+            project.style.display = shouldShow ? 'block' : 'none';
           });
-        });
-      }, 300);
+
+          // Immediately show relevant projects
+          relevantProjects.forEach(project => {
+            project.style.opacity = '1';
+            project.style.transform = 'translateY(0)';
+          });
+
+          isAnimating = false;
+        }, 150); // Reduced timing for faster transitions
+      });
+
+      currentCategory = category;
     }
 
+    // Add click handlers
     buttons.forEach(button => {
       button.addEventListener('click', () => {
-        buttons.forEach(btn => btn.setAttribute('aria-selected', 'false'));
-        button.setAttribute('aria-selected', 'true');
-        
-        const category = button.dataset.category;
-        if (category) filterProjects(category);
+        if (!isAnimating) {
+          filterProjects(button.dataset.category);
+        }
       });
     });
 
-    // Initial animation
-    requestAnimationFrame(() => {
-      animateCards(true);
-    });
+    // Initialize with 'all' category
+    filterProjects('all');
   }
 
-  // Setup on initial load and view transitions
-  setupProjectFiltering();
+  // Setup on page load
   document.addEventListener('astro:page-load', setupProjectFiltering);
 </script>
 
 <style>
-  .project-card {
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  .project-item {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.15s ease-out, transform 0.15s ease-out;
+    will-change: transform, opacity;
   }
 
   .category-btn {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.15s ease-out;
+    user-select: none;
   }
 
   .category-btn[aria-selected="true"] {
-    @apply bg-primary-50 border-primary-200 text-primary-700 transform -translate-y-0.5;
+    @apply bg-primary-50 border-primary-200 text-primary-700;
+    transform: translateY(-1px);
   }
 
-  .hidden {
-    display: none;
+  /* Prevent layout shifts */
+  .grid {
+    contain: content;
+    min-height: 400px;
   }
 </style>

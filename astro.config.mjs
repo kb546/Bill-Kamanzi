@@ -1,7 +1,18 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
-import mdx from '@astrojs/mdx';
+import vercel from '@astrojs/vercel/serverless';
 
 export default defineConfig({
-  integrations: [tailwind(), mdx()]
+  integrations: [
+    tailwind()
+  ],
+  output: 'server',
+  adapter: vercel(),
+  image: {
+    service: {
+      entrypoint: 'astro/assets/services/sharp'
+    },
+    domains: ['images.unsplash.com'],
+    remotePatterns: [{ protocol: "https" }]
+  }
 });
