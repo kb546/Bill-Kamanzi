@@ -2,6 +2,7 @@
 import '@fontsource/inter';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { SpeedInsights } from "@vercel/speed-insights/astro";
 
 interface Props {
   title: string;
@@ -27,6 +28,7 @@ const { title, description = "Bill Kamanzi's Portfolio - Data Analyst, Developer
       <slot />
     </main>
     <Footer />
+    <SpeedInsights />
   </body>
 </html>
 
