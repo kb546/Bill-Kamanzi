@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Skills from '../components/sections/Skills.astro';
+---
+
+<Layout title="Skills - Bill Kamanzi">
+  <div class="pt-16">
+    <section class="py-20 relative overflow-hidden">
+      <!-- Background decoration -->
+      <div class="absolute inset-0 -z-10 overflow-hidden">
+        <div class="absolute -top-1/2 -right-1/2 w-96 h-96 rounded-full bg-primary-100/20"></div>
+        <div class="absolute -bottom-1/2 -left-1/2 w-96 h-96 rounded-full bg-primary-50/30"></div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h1 class="text-4xl font-bold text-gray-900 mb-4">Skills & Expertise</h1>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            A comprehensive overview of my technical skills and proficiencies across various 
+            domains of software development and data science.
+          </p>
+        </div>
+
+        <!-- Skills grid -->
+        <Skills />
+      </div>
+    </section>
+  </div>
+</Layout>

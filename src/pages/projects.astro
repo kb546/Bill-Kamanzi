@@ -1,0 +1,248 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/cards/ProjectCard.astro';
+
+// Define categories
+const categories = [
+  { id: 'all', name: 'All Projects', icon: '📂' },
+  { id: 'data-analysis', name: 'Data Analysis', icon: '📊' },
+  { id: 'web-development', name: 'Web Development', icon: '🌐' },
+  { id: 'machine-learning', name: 'Machine Learning', icon: '🤖' },
+  { id: 'system-admin', name: 'System Administration', icon: '⚙️' }
+];
+
+const projects = [
+  {
+    "title": "SpaceX Falcon 9 Landing Prediction",
+    "description": "Predicted SpaceX Falcon 9 rocket landing success based on various flight parameters.",
+    "technologies": ["Python", "Pandas", "NumPy", "SQL", "Machine Learning", "Logistic Regression", "SVM", "KNN", "Decision Tree"],
+    "imageUrl": "/images/projects/spacex-falcon9.jpg",
+    "githubUrl": "https://github.com/kb546/DataScience_Capstone_Project",
+    "liveUrl": "https://github.com/kb546/DataScience_Capstone_Project",
+    "category": "machine-learning"
+  },
+  {
+    "title": "Social Buzz Data Analytics Project",
+    "description": "Analyzed social media content trends, user engagement, and post performance for Social Buzz.",
+    "technologies": ["Excel", "Data Cleaning", "VLOOKUP", "Pivot Tables", "Data Visualization"],
+    "imageUrl": "/images/projects/social-analytics.jpg",
+    "githubUrl": "https://github.com/kb546/Social_Buzz_Data_Analytics_Project",
+    "liveUrl": "https://github.com/kb546/Social_Buzz_Data_Analytics_Project",
+    "category": "data-analysis"
+  },
+  {
+    "title": "Sales and Customer Performance Tableau Dashboard",
+    "description": "Created interactive Tableau dashboards for tracking sales, customer trends, and KPIs.",
+    "technologies": ["Tableau", "Data Visualization", "Sales Analysis", "Customer Segmentation"],
+    "imageUrl": "/images/projects/tableau-dashboard.jpg",
+    "githubUrl": "https://bit.ly/4eixeo2",
+    "liveUrl": "https://bit.ly/4eixeo2",
+    "category": "data-analysis"
+  },
+  {
+    "title": "Healthcare Data Analysis Power BI Dashboard",
+    "description": "Built an interactive Power BI dashboard to visualize patient satisfaction, demographics, and healthcare performance metrics.",
+    "technologies": ["Power BI", "Healthcare Analytics", "Interactive Dashboards", "Data Analysis", "Data Cleaning"],
+    "imageUrl": "/images/projects/healthcare-dashboard.jpg",
+    "githubUrl": "https://github.com/kb546/Healthcare_Data_Analysis_PowerBI",
+    "liveUrl": "https://github.com/kb546/Healthcare_Data_Analysis_PowerBI",
+    "category": "data-analysis"
+  },
+  {
+    "title": "CampConnect - Smart Camping Tent",
+    "description": "Led a team to design and prototype a smart camping tent with integrated solar panels for eco-friendly power.",
+    "technologies": ["React.js", "Firebase", "Web Development", "IoT"],
+    "imageUrl": "/images/projects/smart-tent.jpg",
+    "githubUrl": "https://github.com/kb546/CampConnect-Smart-Camping-Tent",
+    "liveUrl": "https://github.com/kb546/CampConnect-Smart-Camping-Tent",
+    "category": "web-development"
+  },
+  {
+    "title": "RIT iSchool Web Service Consumption with React.js",
+    "description": "Developed a web application using React.js to interact with the RIT iSchool website API.",
+    "technologies": ["React.js", "API Integration", "Web Development", "JavaScript"],
+    "imageUrl": "/images/projects/react-web-service.jpg",
+    "githubUrl": "https://github.com/kb546/Project-2-React",
+    "liveUrl": "https://github.com/kb546/Project-2-React",
+    "category": "web-development"
+  },
+  {
+    "title": "Responsive Replica of Dubai Expo 2020 Website",
+    "description": "Designed and developed a responsive replica of the Dubai Expo 2020 website to guide tourists around the event.",
+    "technologies": ["HTML", "CSS", "JavaScript", "Responsive Design"],
+    "imageUrl": "/images/projects/dubai-expo.jpg",
+    "githubUrl": "https://people.rit.edu/~kb5703/240/homepage/project.html",
+    "liveUrl": "https://people.rit.edu/~kb5703/240/homepage/project.html",
+    "category": "web-development"
+  },
+  {
+    "title": "House Sales Prediction in Washington, USA",
+    "description": "Utilized Python for data cleaning and feature engineering to predict housing prices.",
+    "technologies": ["Python", "Data Analysis", "Machine Learning", "Linear Regression", "Ridge Regression"],
+    "imageUrl": "/images/projects/house-prediction.jpg",
+    "githubUrl": "https://github.com/kb546/House-Sales-Prediction-Project",
+    "liveUrl": "https://github.com/kb546/House-Sales-Prediction-Project",
+    "category": "data-analysis"
+  },
+  {
+    "title": "System Administration Project",
+    "description": "Deployed and managed a Linux virtual machine to provide web services, with security measures and regular updates.",
+    "technologies": ["Linux", "Apache2", "DHCP", "SSH", "System Administration"],
+    "imageUrl": "/images/projects/system-admin.jpg",
+    "githubUrl": "https://github.com/kb546/System-Administration-Project",
+    "liveUrl": "https://github.com/kb546/System-Administration-Project",
+    "category": "system-admin"
+  }
+];
+
+// Split projects into initial and deferred loads
+const initialProjects = projects.slice(0, 3);
+const deferredProjects = projects.slice(3);
+---
+
+<Layout title="Projects - Bill Kamanzi">
+  <div class="pt-16">
+    <section class="py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h1 class="text-4xl font-bold text-gray-900 mb-4">Projects</h1>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            A showcase of my work in data science, web development, and software engineering.
+          </p>
+        </div>
+        
+        <!-- Category Filter Buttons -->
+        <div class="flex flex-wrap gap-3 mb-12">
+          {categories.map(category => (
+            <button
+              data-category={category.id}
+              class="category-btn px-4 py-2 rounded-md flex items-center gap-2 
+                     text-sm font-medium transition-all duration-200
+                     bg-white border border-gray-200
+                     hover:border-primary-400 hover:bg-primary-50/40 hover:text-primary-600
+                     focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:ring-offset-1
+                     aria-selected:bg-primary-50/60 aria-selected:text-primary-700 aria-selected:border-primary-200
+                     shadow-sm hover:shadow"
+              aria-selected={category.id === 'all'}
+            >
+              <span class="text-lg leading-none">{category.icon}</span>
+              <span class="relative top-[1px]">{category.name}</span>
+            </button>
+          ))}
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-grid">
+          {initialProjects.map(project => (
+            <div class="project-card" data-category={project.category}>
+              <ProjectCard {...project} />
+            </div>
+          ))}
+          {deferredProjects.map(project => (
+            <div 
+              class="project-card opacity-0 transform translate-y-4" 
+              data-category={project.category}
+            >
+              <ProjectCard {...project} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<script>
+  // Enhanced JavaScript for smoother transitions and progressive loading
+  document.addEventListener('DOMContentLoaded', () => {
+    const categoryButtons = document.querySelectorAll('.category-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    // Progressive loading of deferred projects
+    const loadDeferredProjects = () => {
+      projectCards.forEach((card, index) => {
+        if (index >= 3) { // Deferred projects start from index 3
+          setTimeout(() => {
+            card.classList.remove('opacity-0', 'translate-y-4');
+          }, (index - 3) * 100); // Stagger the animations
+        }
+      });
+    };
+
+    // Load deferred projects after initial content
+    requestIdleCallback(() => {
+      loadDeferredProjects();
+    });
+
+    // Category filtering
+    categoryButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Update button styles
+        categoryButtons.forEach(btn => {
+          btn.setAttribute('aria-selected', 'false');
+          btn.style.transform = '';
+        });
+        button.setAttribute('aria-selected', 'true');
+        button.style.transform = 'translateY(-0.125rem)';
+
+        const selectedCategory = button.dataset.category;
+
+        // Filter projects with enhanced animation
+        projectCards.forEach(card => {
+          if (selectedCategory === 'all' || card.dataset.category === selectedCategory) {
+            card.style.display = 'block';
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            
+            requestAnimationFrame(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            });
+          } else {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+              card.style.display = 'none';
+            }, 300);
+          }
+        });
+      });
+    });
+  });
+</script>
+
+<style>
+  .project-card {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .category-btn {
+    transform: translateY(0);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .category-btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .category-btn[aria-selected="true"] {
+    font-weight: 500;
+    transform: translateY(0);
+    background: linear-gradient(to bottom, var(--color-primary-50), var(--color-primary-100/60));
+    border-color: var(--color-primary-200);
+  }
+
+  .category-btn:active {
+    transform: translateY(0);
+  }
+
+  /* Smooth transition for icon and text alignment */
+  .category-btn span {
+    transition: transform 0.2s ease;
+  }
+
+  .category-btn:hover span {
+    transform: translateY(-0.5px);
+  }
+</style>

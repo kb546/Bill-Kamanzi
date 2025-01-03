@@ -1,0 +1,127 @@
+---
+import SkillCategory from './SkillCategory.astro';
+
+const skillCategories = {
+  'Programming Languages': {
+    icon: '💻',
+    description: 'Core languages I use for development',
+    skills: ['JavaScript', 'TypeScript', 'Python', 'Java', 'C#', 'SQL', 'Perl']
+  },
+  'Web Development': {
+    icon: '🌐',
+    description: 'Technologies for building web applications',
+    skills: [
+      'HTML5', 
+      'CSS3', 
+      'JavaScript (ES6+)', 
+      'TypeScript',
+      'Astro',
+      'React',
+      'Tailwind CSS',
+      'Bootstrap',
+      'Node.js',
+      'PHP'
+    ]
+  },
+  'Frontend Frameworks & Libraries': {
+    icon: '⚡',
+    description: 'Modern frameworks and libraries for building user interfaces',
+    skills: [
+      'Astro',
+      'React.js',
+      'Vue.js',
+      'Tailwind CSS',
+      'Framer Motion',
+      'GSAP'
+    ]
+  },
+  'Data Analysis': {
+    icon: '📊',
+    description: 'Tools and languages for data processing',
+    skills: [
+      'Python (Pandas, NumPy, SciPy)',
+      'SQL',
+      'R',
+      'Jupyter Notebooks',
+      'Data Visualization Libraries',
+      'Statistical Analysis'
+    ]
+  },
+  'Development Tools': {
+    icon: '🛠️',
+    description: 'Tools and platforms I use for development',
+    skills: [
+      'Git',
+      'GitHub',
+      'VS Code',
+      'PyCharm',
+      'Eclipse',
+      'npm/yarn',
+      'Webpack',
+      'Vite'
+    ]
+  },
+  'UI/UX & Design': {
+    icon: '🎨',
+    description: 'Design tools and principles',
+    skills: [
+      'Figma',
+      'Responsive Design',
+      'CSS Animations',
+      'Color Theory',
+      'UI Components',
+      'Accessibility (a11y)'
+    ]
+  },
+  'Database & Backend': {
+    icon: '🗄️',
+    description: 'Database systems and backend technologies',
+    skills: [
+      'MySQL',
+      'PostgreSQL',
+      'MongoDB',
+      'Firebase',
+      'RESTful APIs',
+      'Node.js',
+      'Express.js'
+    ]
+  }
+};
+---
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+  {Object.entries(skillCategories).map(([category, { icon, description, skills }]) => (
+    <div class="skill-category bg-white rounded-xl border border-gray-200/80 hover:border-primary-200 
+                transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+      <div class="p-6">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="text-2xl">{icon}</span>
+          <h3 class="text-xl font-bold text-gray-900">{category}</h3>
+        </div>
+        <p class="text-gray-600 text-sm mb-6">{description}</p>
+        <div class="flex flex-wrap gap-2">
+          {skills.map(skill => (
+            <span class="inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-medium
+                       bg-primary-50/50 text-primary-700 border border-primary-100/50
+                       hover:bg-primary-100/50 transition-colors duration-200">
+              {skill}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
+<style>
+  .skill-category {
+    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  @media (min-width: 1024px) {
+    .skill-category:last-child {
+      grid-column: 1 / -1;
+    }
+  }
+</style>

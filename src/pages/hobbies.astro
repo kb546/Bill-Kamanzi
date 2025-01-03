@@ -1,0 +1,57 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HobbyCard from '../components/cards/HobbyCard.astro';
+
+const hobbies = [
+  {
+    title: "Basketball",
+    description: "Playing basketball helps me stay active and teaches valuable lessons about teamwork and strategy.",
+    imageUrl: "/images/hobbies/basketball.jpg"
+  },
+  {
+    title: "Football",
+    description: "Football is my way to unwind and enjoy the beautiful game with friends and colleagues.",
+    imageUrl: "/images/hobbies/football.jpg"
+  },
+  {
+    title: "Golf",
+    description: "Golf challenges me to maintain focus and precision while enjoying the outdoors.",
+    imageUrl: "/images/hobbies/golf.jpg"
+  }
+];
+---
+
+<Layout title="Hobbies - Bill Kamanzi">
+  <div class="pt-16">
+    <section class="py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h1 class="text-4xl font-bold text-gray-900 mb-4">Hobbies & Interests</h1>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            Beyond professional work, here are some activities I enjoy in my free time.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {hobbies.map(hobby => (
+            <div class="h-full">
+              <HobbyCard {...hobby} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .grid {
+    display: grid;
+    grid-auto-rows: 1fr; /* Make all rows the same height */
+  }
+
+  .grid > div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+</style>

@@ -1,0 +1,31 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BlogCard from '../../components/cards/BlogCard.astro';
+
+const posts = [
+  {
+    title: "Getting Started with Data Analysis in Python",
+    excerpt: "Learn the basics of data analysis using Python and popular libraries like Pandas and NumPy.",
+    date: "2024-01-15",
+    category: "Data Science",
+    slug: "getting-started-data-analysis",
+    imageUrl: "/images/blogs/data-analysis.jpg"
+  },
+  // Add more blog posts here
+];
+---
+
+<Layout title="Blog - Bill Kamanzi">
+  <div class="pt-16">
+    <section class="py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-12">Blog</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {posts.map(post => (
+            <BlogCard {...post} />
+          ))}
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>

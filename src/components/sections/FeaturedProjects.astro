@@ -1,0 +1,44 @@
+---
+import ProjectCard from '../cards/ProjectCard.astro';
+
+const featuredProjects = [
+  {
+   "title": "SpaceX Falcon 9 Landing Prediction",
+    "description": "Predicted SpaceX Falcon 9 rocket landing success based on various flight parameters.",
+    "technologies": ["Python", "Pandas", "NumPy", "SQL", "Machine Learning", "Logistic Regression", "SVM", "KNN", "Decision Tree"],
+    "imageUrl": "/images/projects/spacex-falcon9.jpg",
+    "githubUrl": "https://github.com/kb546/DataScience_Capstone_Project",
+    "liveUrl": "https://github.com/kb546/DataScience_Capstone_Project",
+    "category": "machine-learning"
+  },
+  {
+    "title": "Sales and Customer Performance Tableau Dashboard",
+    "description": "Created interactive Tableau dashboards for tracking sales, customer trends, and KPIs.",
+    "technologies": ["Tableau", "Data Visualization", "Sales Analysis", "Customer Segmentation"],
+    "imageUrl": "/images/projects/tableau-dashboard.jpg",
+    "githubUrl": "https://bit.ly/4eixeo2",
+    "liveUrl": "https://bit.ly/4eixeo2",
+    "category": "data-analysis"
+  },
+  {
+    "title": "Healthcare Data Analysis Power BI Dashboard",
+    "description": "Built an interactive Power BI dashboard to visualize patient satisfaction, demographics, and healthcare performance metrics.",
+    "technologies": ["Power BI", "Healthcare Analytics", "Interactive Dashboards", "Data Analysis", "Data Cleaning"],
+    "imageUrl": "/images/projects/healthcare-dashboard.jpg",
+    "githubUrl": "https://github.com/kb546/Healthcare_Data_Analysis_PowerBI",
+    "liveUrl": "https://github.com/kb546/Healthcare_Data_Analysis_PowerBI",
+    "category": "data-analysis"
+  },
+];
+---
+
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl font-bold text-gray-900 mb-8">Featured Projects</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {featuredProjects.map(project => (
+        <ProjectCard {...project} />
+      ))}
+    </div>
+  </div>
+</section>

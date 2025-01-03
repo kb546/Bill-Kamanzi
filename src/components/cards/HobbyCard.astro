@@ -1,0 +1,53 @@
+---
+import Card from '../ui/Card.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  imageUrl: string;
+}
+
+const { title, description, imageUrl } = Astro.props;
+---
+<Card class="hobby-card overflow-hidden h-full">
+  <div class="flex flex-col h-full">
+    <div class="relative h-[300px] overflow-hidden">
+      <img 
+        src={imageUrl} 
+        alt={title} 
+        class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+    </div>
+    <div class="p-6 flex flex-col flex-grow">
+      <h3 class="text-2xl font-bold text-gray-900 mb-3">{title}</h3>
+      <p class="text-gray-600 leading-relaxed line-clamp-3">{description}</p>
+    </div>
+  </div>
+</Card>
+
+<style>
+  .hobby-card {
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease-in-out;
+    background: #ffffff;
+  }
+
+  .hobby-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  img {
+    object-position: center;
+    height: 300px; /* Fixed height for consistency */
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    img {
+      height: 250px; /* Slightly smaller on mobile */
+    }
+  }
+</style>
