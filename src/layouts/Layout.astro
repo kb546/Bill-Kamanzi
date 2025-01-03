@@ -3,6 +3,7 @@ import '@fontsource/inter';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import SpeedInsights from "@vercel/speed-insights/astro";
+import { ViewTransitions } from 'astro:transitions';
 
 interface Props {
   title: string;
@@ -20,7 +21,15 @@ const { title, description = "Bill Kamanzi's Portfolio - Data Analyst, Developer
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <ViewTransitions />
     <title>{title}</title>
+    <link 
+      rel="preload" 
+      href="/fonts/inter-var.woff2" 
+      as="font" 
+      type="font/woff2" 
+      crossorigin 
+    />
   </head>
   <body class="min-h-screen bg-gray-50">
     <Header />
