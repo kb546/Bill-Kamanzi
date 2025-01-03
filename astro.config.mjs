@@ -7,7 +7,17 @@ export default defineConfig({
     tailwind()
   ],
   output: 'server',
-  adapter: vercel(),
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+    speedInsights: {
+      enabled: true,
+    },
+    imageService: true,
+    devImageService: 'sharp',
+    runtime: 'nodejs20.x'
+  }),
   image: {
     service: {
       entrypoint: 'astro/assets/services/sharp'
