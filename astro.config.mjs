@@ -8,15 +8,8 @@ export default defineConfig({
   ],
   output: 'server',
   adapter: vercel({
-    webAnalytics: {
-      enabled: true,
-    },
-    speedInsights: {
-      enabled: true,
-    },
-    imageService: true,
-    devImageService: 'sharp',
-    runtime: 'nodejs20.x'
+    analytics: true,
+    runtime: 'nodejs18.x'
   }),
   image: {
     service: {
@@ -24,20 +17,7 @@ export default defineConfig({
     },
     domains: ['images.unsplash.com'],
     remotePatterns: [{ protocol: "https" }],
-    format: ['webp', 'avif'],
+    format: ['webp'],
     quality: 80
-  },
-  vite: {
-    build: {
-      cssMinify: true,
-      minify: true,
-      rollupOptions: {
-        output: {
-          manualChunks: {
-            'critical': ['./src/components/Header.astro', './src/components/Footer.astro']
-          }
-        }
-      }
-    }
   }
 });
