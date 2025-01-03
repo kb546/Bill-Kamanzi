@@ -9,8 +9,7 @@ export default defineConfig({
   output: 'server',
   adapter: vercel({
     analytics: true,
-    includeFiles: ['./dist/**'],
-    functionPerRoute: false
+    maxDuration: 60
   }),
   image: {
     service: {
