@@ -1,0 +1,73 @@
+---
+interface Props {
+  title: string;
+  issuer: string;
+  skills: string[];
+  link: string;
+}
+
+const { title, issuer, skills, link } = Astro.props;
+---
+
+<div class="certificate-card bg-white/80 backdrop-blur-sm rounded-xl border border-gray-100 
+            transition-all duration-300 hover:shadow-md hover:border-primary-100 hover:-translate-y-0.5">
+  <div class="p-6">
+    <div class="flex items-center gap-4 mb-6">
+      <div class="p-2.5 bg-gradient-to-br from-primary-50 to-primary-100/50 rounded-xl">
+        {issuer === "IBM" ? (
+          <svg class="h-6 w-6 text-primary-600/90" viewBox="0 0 32 32" fill="currentColor">
+            <path d="M27.987 23.468h4.013V32H27.987z"/><path d="M27.987 15.66h4.013v4.012h-4.013z"/><path d="M27.987 7.853h4.013v4.013h-4.013z"/><path d="M27.987 0h4.013v4.013h-4.013z"/><path d="M20.18 23.468h4.013V32H20.18z"/><path d="M20.18 15.66h4.013v4.012H20.18z"/><path d="M20.18 7.853h4.013v4.013H20.18z"/><path d="M12.373 23.468h4.013V32h-4.013z"/><path d="M12.373 15.66h4.013v4.012h-4.013z"/><path d="M12.373 7.853h4.013v4.013h-4.013z"/><path d="M4.566 23.468h4.013V32H4.566z"/><path d="M4.566 15.66h4.013v4.012H4.566z"/><path d="M4.566 7.853h4.013v4.013H4.566z"/><path d="M4.566 0h4.013v4.013H4.566z"/><path d="M0 23.468h1.791V32H0z"/>
+          </svg>
+        ) : (
+          <svg class="h-6 w-6 text-primary-600/90" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12" />
+          </svg>
+        )}
+      </div>
+      <div>
+        <h3 class="text-lg font-medium text-gray-800 leading-tight">{title}</h3>
+        <p class="text-sm text-primary-600/90 mt-1">{issuer}</p>
+      </div>
+    </div>
+
+    <div class="space-y-4">
+      <div>
+        <h4 class="text-xs uppercase tracking-wider text-gray-500 mb-3 font-medium">Skills & Topics</h4>
+        <div class="flex flex-wrap gap-1.5">
+          {skills.map(skill => (
+            <span class="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium
+                       bg-gray-50 text-gray-600 border border-gray-100
+                       hover:bg-primary-50/50 hover:text-primary-700 hover:border-primary-100/50 
+                       transition-colors duration-200">
+              {skill}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <a
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center text-sm text-gray-600 hover:text-primary-600 
+               font-medium group transition-colors duration-200"
+      >
+        View Certificate
+        <svg 
+          class="ml-1.5 w-4 h-4 group-hover:translate-x-0.5 transition-transform" 
+          fill="none" 
+          viewBox="0 0 24 24" 
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .certificate-card {
+    isolation: isolate;
+  }
+</style> 

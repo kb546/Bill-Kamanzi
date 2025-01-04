@@ -2,49 +2,61 @@
 import SkillCategory from './SkillCategory.astro';
 
 const skillCategories = {
+  'Data Analysis & Visualization': {
+    icon: '📊',
+    description: 'Tools and platforms for data analysis and visualization',
+    skills: [
+      'Python (Pandas, NumPy)',
+      'R',
+      'Tableau',
+      'Power BI',
+      'SQL',
+      'Looker',
+      'Excel',
+      'Statistical Analysis',
+      'Data Cleaning',
+      'ETL Processes'
+    ]
+  },
+  'Machine Learning': {
+    icon: '🤖',
+    description: 'Machine learning algorithms and frameworks',
+    skills: [
+      'Scikit-learn',
+      'Logistic Regression',
+      'Support Vector Machine',
+      'KNN',
+      'Decision Trees',
+      'Statistical Modeling',
+      'Feature Engineering',
+      'Model Evaluation'
+    ]
+  },
   'Programming Languages': {
     icon: '💻',
     description: 'Core languages I use for development',
-    skills: ['JavaScript', 'TypeScript', 'Python', 'Java', 'C#', 'SQL', 'Perl']
+    skills: [
+      'Python',
+      'JavaScript',
+      'TypeScript', 
+      'SQL',
+      'Java',
+      'C#',
+      'Perl'
+    ]
   },
   'Web Development': {
     icon: '🌐',
     description: 'Technologies for building web applications',
     skills: [
-      'HTML5', 
-      'CSS3', 
-      'JavaScript (ES6+)', 
-      'TypeScript',
+      'React.js',
       'Astro',
-      'React',
+      'Node.js',
+      'HTML5/CSS3',
+      'TypeScript',
       'Tailwind CSS',
       'Bootstrap',
-      'Node.js',
       'PHP'
-    ]
-  },
-  'Frontend Frameworks & Libraries': {
-    icon: '⚡',
-    description: 'Modern frameworks and libraries for building user interfaces',
-    skills: [
-      'Astro',
-      'React.js',
-      'Vue.js',
-      'Tailwind CSS',
-      'Framer Motion',
-      'GSAP'
-    ]
-  },
-  'Data Analysis': {
-    icon: '📊',
-    description: 'Tools and languages for data processing',
-    skills: [
-      'Python (Pandas, NumPy, SciPy)',
-      'SQL',
-      'R',
-      'Jupyter Notebooks',
-      'Data Visualization Libraries',
-      'Statistical Analysis'
     ]
   },
   'Development Tools': {
@@ -55,22 +67,10 @@ const skillCategories = {
       'GitHub',
       'VS Code',
       'PyCharm',
-      'Eclipse',
+      'Jupyter Notebooks',
       'npm/yarn',
-      'Webpack',
-      'Vite'
-    ]
-  },
-  'UI/UX & Design': {
-    icon: '🎨',
-    description: 'Design tools and principles',
-    skills: [
-      'Figma',
-      'Responsive Design',
-      'CSS Animations',
-      'Color Theory',
-      'UI Components',
-      'Accessibility (a11y)'
+      'Docker',
+      'AWS'
     ]
   },
   'Database & Backend': {
@@ -84,6 +84,18 @@ const skillCategories = {
       'RESTful APIs',
       'Node.js',
       'Express.js'
+    ]
+  },
+  'UI/UX & Design': {
+    icon: '🎨',
+    description: 'Design tools and principles',
+    skills: [
+      'Figma',
+      'Responsive Design',
+      'CSS Animations',
+      'Color Theory',
+      'UI Components',
+      'Accessibility (a11y)'
     ]
   }
 };

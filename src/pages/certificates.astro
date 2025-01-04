@@ -1,0 +1,82 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CertificateCard from '../components/cards/CertificateCard.astro';
+
+const certificates = [
+  {
+    title: "Generative AI in Data Science",
+    issuer: "IBM",
+    skills: ["Generative AI", "Deep Learning", "Neural Networks", "PyTorch", "TensorFlow"],
+    link: "https://coursera.org/share/85740fcfc8dcfb2c4cff9a19b26c3928"
+  },
+  {
+    title: "IBM Data Science Professional",
+    issuer: "IBM",
+    skills: ["Data Science", "Machine Learning", "Python", "Data Analysis", "Statistical Methods"],
+    link: "https://coursera.org/share/c1e27536e5955bb9b639d50158f96a12"
+  },
+  {
+    title: "Machine Learning with Python",
+    issuer: "IBM",
+    skills: ["Scikit-learn", "Supervised Learning", "Model Evaluation", "Feature Engineering", "Classification"],
+    link: "https://coursera.org/share/dc090f3cda16e52d5425e52d71a8cdcf"
+  },
+  {
+    title: "Data Analysis with Python",
+    issuer: "IBM",
+    skills: ["Pandas", "NumPy", "Data Cleaning", "Data Preprocessing", "Statistical Analysis"],
+    link: "https://coursera.org/share/cdb94a81dd0e192fd8d388dc9884f422"
+  },
+  {
+    title: "Data Visualization with Python",
+    issuer: "IBM",
+    skills: ["Matplotlib", "Seaborn", "Plotly", "Interactive Visualization", "Data Storytelling"],
+    link: "https://coursera.org/share/01ed24f67c1a945bf9f8dfd6401b9376"
+  },
+  {
+    title: "Databases and SQL for Data Science with Python",
+    issuer: "IBM",
+    skills: ["SQL", "Database Design", "Data Querying", "Python-SQL Integration", "Data Manipulation"],
+    link: "https://coursera.org/share/1423c10dfb1a8732e030aa4f4480966f"
+  },
+  {
+    title: "Analyzing and Visualizing Data in Looker",
+    issuer: "Google",
+    skills: ["Looker", "Business Intelligence", "Data Modeling", "LookML", "Dashboard Design"],
+    link: "https://www.cloudskillsboost.google/public_profiles/fafea5ea-f803-4df1-8f1f-5d3dd68f4d26/badges/9345776"
+  },
+  {
+    title: "Python for Data Science, AI & Development",
+    issuer: "IBM",
+    skills: ["Python", "Data Structures", "APIs", "Data Science Libraries", "Algorithm Design"],
+    link: "https://www.coursera.org/account/accomplishments/records/GSTC8JEQ8FE9"
+  }
+];
+---
+
+<Layout title="Certificates - Bill Kamanzi">
+  <div class="pt-16">
+    <section class="py-20 relative overflow-hidden">
+      <!-- Subtle background decoration -->
+      <div class="absolute inset-0 -z-10 overflow-hidden opacity-50">
+        <div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-[500px] h-[500px] rounded-full bg-gradient-to-br from-primary-50/40 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-primary-50/40 to-transparent"></div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h1 class="text-3xl font-medium text-gray-900 mb-3">Certificates</h1>
+          <p class="text-base text-gray-600 max-w-2xl mx-auto">
+            Professional certifications in Data Science, Machine Learning, and Analytics
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          {certificates.map(certificate => (
+            <CertificateCard {...certificate} />
+          ))}
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout> 
