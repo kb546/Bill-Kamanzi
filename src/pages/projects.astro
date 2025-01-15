@@ -11,7 +11,32 @@ const categories = [
   { id: 'system-admin', name: 'System Administration', icon: '⚙️' }
 ];
 
+// Define projects with new additions
 const projects = [
+  {
+    title: "Fraud Detection System",
+    description: "Developed a predictive model to identify fraudulent transactions in a retail self-scanning system. The system helps minimize losses while maintaining customer trust by optimizing follow-up checks.",
+    technologies: ["R", "Machine Learning", "Data Analysis", "Statistical Modeling", "Classification Algorithms"],
+    category: "machine-learning",
+    githubUrl: "https://github.com/kb546/Fraud-Detection-System",
+    featured: true
+  },
+  {
+    title: "The Rosa Restaurant",
+    description: "Designed and developed a responsive website for a restaurant with modern UI/UX principles. Features include menu showcase, reservation system, and mobile-first design.",
+    technologies: ["HTML", "CSS", "JavaScript", "Responsive Design", "UI/UX"],
+    category: "web-development",
+    githubUrl: "https://github.com/kb546/The-Rosa-Restaurant",
+    featured: true
+  },
+  {
+    title: "iHub Store",
+    description: "Created an e-commerce platform for a phone retail business. Implemented product catalog, shopping cart, and responsive design for optimal mobile experience.",
+    technologies: ["HTML", "CSS", "JavaScript", "E-commerce", "Responsive Design"],
+    category: "web-development",
+    githubUrl: "https://github.com/kb546/iHub-Store",
+    featured: true
+  },
   {
     "title": "SpaceX Falcon 9 Landing Prediction",
     "description": "Predicted SpaceX Falcon 9 rocket landing success based on various flight parameters.",
@@ -93,7 +118,11 @@ const projects = [
     "liveUrl": "https://github.com/kb546/System-Administration-Project",
     "category": "system-admin"
   }
-].sort((a, b) => a.category.localeCompare(b.category));
+].sort((a, b) => {
+  if (a.featured && !b.featured) return -1;
+  if (!a.featured && b.featured) return 1;
+  return 0;
+});
 ---
 
 <Layout title="Projects - Bill Kamanzi">
