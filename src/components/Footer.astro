@@ -14,7 +14,7 @@ const currentYear = new Date().getFullYear();
         <div class="flex space-x-4">
           <a 
             href="https://github.com/yourusername" 
-            class="text-gray-400 hover:text-gray-500 transition-colors"
+            class="social-icon github-icon"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -25,7 +25,7 @@ const currentYear = new Date().getFullYear();
           </a>
           <a 
             href="https://www.linkedin.com/in/bill-kamanzi/" 
-            class="text-gray-400 hover:text-gray-500 transition-colors"
+            class="social-icon linkedin-icon"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -47,7 +47,6 @@ const currentYear = new Date().getFullYear();
             { label: 'Skills', href: '/skills' },
             { label: 'Certificates', href: '/certificates' },
             { label: 'Hobbies', href: '/hobbies' },
-            { label: 'Blog', href: '/blog' },
             { label: 'Contact', href: '/contact' }
           ].map(({ label, href }) => (
             <a 
@@ -86,3 +85,17 @@ const currentYear = new Date().getFullYear();
     </div>
   </div>
 </footer>
+
+<style>
+  .social-icon {
+    @apply text-gray-400 transition-colors duration-300 ease-in-out;
+  }
+
+  .github-icon:hover {
+    @apply text-gray-900; /* GitHub's brand color */
+  }
+
+  .linkedin-icon:hover {
+    color: #0A66C2; /* LinkedIn's brand color */
+  }
+</style>

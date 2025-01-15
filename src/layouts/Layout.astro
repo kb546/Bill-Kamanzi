@@ -33,6 +33,14 @@ const { title, description = "Bill Kamanzi's Portfolio" } = Astro.props;
       crossorigin 
     />
     
+    <!-- Preload critical images -->
+    <link
+      rel="preload"
+      as="image"
+      href="/images/profile.webp"
+      type="image/webp"
+    />
+    
     <ViewTransitions />
     <title>{title}</title>
   </head>
