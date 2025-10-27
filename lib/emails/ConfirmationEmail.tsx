@@ -44,7 +44,7 @@ export default function ConfirmationEmail({
 
             <Section style={buttonContainer}>
               <Button
-                href="https://billkamanzi.com/projects"
+                href="https://www.bilkamanzi.com/projects"
                 style={button}
               >
                 View My Portfolio
@@ -53,7 +53,7 @@ export default function ConfirmationEmail({
 
             <Section style={buttonContainer}>
               <Button
-                href="https://billkamanzi.com/downloads/Bill-Kamanzi-Resume.pdf"
+                href="https://www.bilkamanzi.com/images/Bill-Kamanzi-Resume.pdf"
                 style={button}
               >
                 Download My Resume
@@ -62,7 +62,7 @@ export default function ConfirmationEmail({
 
             <Section style={buttonContainer}>
               <Button
-                href="https://www.linkedin.com/in/billkamanzi"
+                href="https://www.linkedin.com/in/bill-kamanzi/"
                 style={button}
               >
                 Connect on LinkedIn
