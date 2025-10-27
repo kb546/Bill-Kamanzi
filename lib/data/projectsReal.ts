@@ -8,7 +8,7 @@ export interface Project {
   description: string
   longDescription: string
   heroImage: string
-  logo: string
+  logo?: string  // Optional - not all projects have logos
   logoVariant?: 'light' | 'dark' // for Quackr
   images: string[]
   gradientFrom: string
@@ -75,7 +75,6 @@ export const projects: Project[] = [
     logo: '/images/projects/quackr/quackr-logo-light.png',
     logoVariant: 'light',
     cardLogo: '/images/projects/quackr/quackr-logo.png',
-    backgroundImage: undefined,
     images: [
       '/images/projects/quackr/1.png',
       '/images/projects/quackr/2.png',
@@ -243,8 +242,6 @@ export const projects: Project[] = [
     description: 'Developed UVC\'s blog platform using WordPress and Blocksy theme, creating a content hub for their facility management services. Managed their LinkedIn presence and established local search visibility through Google My Business.',
     longDescription: 'UVC Technical Services, a facility management company based in Dubai at Innov8 Business Incubator, required a sophisticated blog platform to share insights about HVAC, MEP, and facility management best practices. I designed and developed a custom WordPress solution using the Blocksy theme, creating a content management system that empowered their team to share technical expertise and engage with their audience. Complementing the technical work, I managed their professional LinkedIn presence and optimized their Google My Business profile to enhance local visibility and establish UVC as thought leaders in the facility management space.',
     heroImage: '/images/projects/uvc/2.jpeg',
-    logo: undefined,
-    cardLogo: undefined,
     backgroundImage: '/images/projects/uvc/5.jpeg',
     images: [
       '/images/projects/uvc/2.jpeg',
