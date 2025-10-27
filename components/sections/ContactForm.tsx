@@ -2,7 +2,8 @@
 
 import { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Send, CheckCircle, Mail, Phone, MapPin } from 'lucide-react'
+import { Send, CheckCircle, Mail, Phone, MapPin, AlertCircle } from 'lucide-react'
+import { trackFormStart, trackFormSubmission, trackFormError } from '@/lib/utils/analytics'
 
 export default function ContactForm() {
   const ref = useRef(null)
@@ -18,16 +19,110 @@ export default function ContactForm() {
   })
 
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState<string>('')
+  const [formStarted, setFormStarted] = useState(false)
+
+  // Email validation regex
+  const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+  // Valid email domains
+  const VALID_DOMAINS = [
+    'gmail.com',
+    'yahoo.com',
+    'outlook.com',
+    'hotmail.com',
+    'icloud.com',
+    'protonmail.com',
+    'live.com',
+    'msn.com',
+    'me.com',
+    'mac.com',
+    'aol.com',
+    'zoho.com',
+    'yandex.com',
+    'mail.com',
+  ]
+
+  const validateEmail = (email: string): { valid: boolean; error?: string } => {
+    if (!email || !EMAIL_REGEX.test(email)) {
+      return { valid: false, error: 'Invalid email format' }
+    }
+
+    const domain = email.split('@')[1]?.toLowerCase()
+
+    if (!domain) {
+      return { valid: false, error: 'Invalid email format' }
+    }
+
+    if (!VALID_DOMAINS.includes(domain)) {
+      return {
+        valid: false,
+        error: 'Please use a valid email provider (Gmail, Yahoo, Outlook, iCloud, etc.)',
+      }
+    }
+
+    return { valid: true }
+  }
+
+  const handleFormStart = () => {
+    if (!formStarted) {
+      setFormStarted(true)
+      trackFormStart()
+    }
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setErrorMessage('')
+    
+    // Validate email
+    const emailValidation = validateEmail(formData.email)
+    if (!emailValidation.valid) {
+      setStatus('error')
+      setErrorMessage(emailValidation.error || 'Invalid email')
+      trackFormError('email_validation', 'email')
+      return
+    }
+
     setStatus('sending')
 
-    // TODO: Integrate with email service (Resend, SendGrid, etc.)
-    setTimeout(() => {
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message')
+      }
+
+      // Track successful submission
+      trackFormSubmission({
+        service: formData.service,
+        budget: formData.budget,
+        timeline: formData.timeline,
+      })
+
       setStatus('success')
       setFormData({ name: '', email: '', service: '', budget: '', timeline: '', message: '' })
-    }, 2000)
+      setFormStarted(false)
+
+      // Reset success message after 5 seconds
+      setTimeout(() => {
+        setStatus('idle')
+      }, 5000)
+    } catch (error) {
+      setStatus('error')
+      setErrorMessage(
+        error instanceof Error ? error.message : 'Failed to send message. Please try again.'
+      )
+      trackFormError('submission_failed')
+    }
   }
 
   return (
@@ -127,6 +222,7 @@ export default function ContactForm() {
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    onFocus={handleFormStart}
                     className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:ring-4 focus:ring-primary-100 outline-none transition-all"
                     placeholder="John Doe"
                   />
@@ -141,6 +237,7 @@ export default function ContactForm() {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    onFocus={handleFormStart}
                     className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:ring-4 focus:ring-primary-100 outline-none transition-all"
                     placeholder="john@example.com"
                   />
@@ -261,6 +358,17 @@ export default function ContactForm() {
                 >
                   <CheckCircle className="w-5 h-5" />
                   Thanks for reaching out! I'll get back to you within 24 hours.
+                </motion.p>
+              )}
+
+              {status === 'error' && errorMessage && (
+                <motion.p
+                  className="text-red-600 font-medium flex items-center gap-2"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
+                  <AlertCircle className="w-5 h-5" />
+                  {errorMessage}
                 </motion.p>
               )}
             </form>

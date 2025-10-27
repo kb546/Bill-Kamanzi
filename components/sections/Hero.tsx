@@ -7,6 +7,7 @@ import Image from 'next/image'
 import { ArrowUpRight } from 'lucide-react'
 import { bio } from '@/lib/data/about'
 import { useReducedMotion } from '@/lib/hooks/useReducedMotion'
+import { trackCTAClick, trackDownload } from '@/lib/utils/analytics'
 
 const skillTags = [
   { 
@@ -158,6 +159,7 @@ export default function Hero() {
                 className="group relative inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 min-h-[48px] rounded-2xl font-bold text-white bg-gradient-to-r from-primary-600 to-secondary-500 hover:from-primary-700 hover:to-secondary-600 shadow-lg hover:shadow-xl transition-all duration-200 overflow-hidden touch-manipulation"
                 onClick={(e) => {
                   e.preventDefault()
+                  trackCTAClick('View Projects', 'hero')
                   const projectsSection = document.getElementById('projects')
                   if (projectsSection) {
                     projectsSection.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' })
@@ -176,6 +178,7 @@ export default function Hero() {
               <a
                 href="/images/Bill-Kamanzi-Resume.pdf"
                 download
+                onClick={() => trackDownload('Bill-Kamanzi-Resume.pdf', 'Download CV')}
                 className="group relative inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 min-h-[48px] rounded-2xl font-bold text-gray-700 bg-white border-2 border-gray-300 hover:border-gray-400 shadow-md hover:shadow-lg transition-all duration-200 touch-manipulation"
               >
                 <motion.span

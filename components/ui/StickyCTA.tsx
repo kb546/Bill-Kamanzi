@@ -6,6 +6,7 @@ import { ArrowRight } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { useReducedMotion } from '@/lib/hooks/useReducedMotion'
+import { trackCTAClick } from '@/lib/utils/analytics'
 
 export default function StickyCTA() {
   const [isVisible, setIsVisible] = useState(false)
@@ -45,7 +46,7 @@ export default function StickyCTA() {
           exit={{ opacity: 0, scale: 0.8, y: 20 }}
           transition={{ duration: 0.3, ease: 'easeOut' }}
         >
-          <Link href="/contact">
+          <Link href="/contact" onClick={() => trackCTAClick('Get Started', 'sticky_cta')}>
             <motion.button
               className="group relative flex items-center gap-2 px-6 py-4 bg-gradient-to-r from-primary-600 to-secondary-500 
                          text-white rounded-full shadow-2xl hover:shadow-primary-500/50 transition-all duration-200

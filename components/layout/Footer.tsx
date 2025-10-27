@@ -5,6 +5,7 @@ import { Linkedin, Github } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { contact } from '@/lib/data/about'
 import Logo from '@/components/ui/Logo'
+import { trackNavigation, trackSocialClick, trackCTAClick } from '@/lib/utils/analytics'
 
 // Dribbble icon component (lucide doesn't have it)
 function DribbbleIcon({ className }: { className?: string }) {
@@ -49,6 +50,7 @@ export default function Footer() {
                   href="https://www.linkedin.com/in/bill-kamanzi/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackSocialClick('LinkedIn', 'https://www.linkedin.com/in/bill-kamanzi/')}
                   className="w-12 h-12 rounded-full bg-gray-800 hover:bg-[#0A66C2] flex items-center justify-center transition-all duration-200 touch-manipulation"
                   whileHover={{ scale: 1.1, y: -3 }}
                   whileTap={{ scale: 0.95 }}
@@ -61,6 +63,7 @@ export default function Footer() {
                   href="https://dribbble.com/bill-kamanzi"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackSocialClick('Dribbble', 'https://dribbble.com/bill-kamanzi')}
                   className="w-12 h-12 rounded-full bg-gray-800 hover:bg-pink-600 flex items-center justify-center transition-all duration-200 touch-manipulation"
                   whileHover={{ scale: 1.1, y: -3 }}
                   whileTap={{ scale: 0.95 }}
@@ -73,6 +76,7 @@ export default function Footer() {
                   href="https://github.com/kb546"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackSocialClick('GitHub', 'https://github.com/kb546')}
                   className="w-12 h-12 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-all duration-200 touch-manipulation"
                   whileHover={{ scale: 1.1, y: -3 }}
                   whileTap={{ scale: 0.95 }}
@@ -93,6 +97,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <Link 
                     href={link.href}
+                    onClick={() => trackNavigation(link.name, link.href, 'footer')}
                     className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
                   >
                     {link.name}
@@ -126,6 +131,7 @@ export default function Footer() {
                 {/* CTA Button */}
                 <Link
                   href="/contact"
+                  onClick={() => trackCTAClick("Let's Work Together", 'footer')}
                   className="inline-block w-full sm:w-auto text-center px-6 py-3 min-h-[44px] bg-gradient-to-r from-primary-600 to-secondary-500 
                             rounded-lg font-bold hover:shadow-lg hover:shadow-primary-500/50 
                             transition-all duration-200 hover:scale-105 text-sm touch-manipulation"

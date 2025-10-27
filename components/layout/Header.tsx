@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { useReducedMotion } from '@/lib/hooks/useReducedMotion'
 import Logo from '@/components/ui/Logo'
+import { trackNavigation } from '@/lib/utils/analytics'
 
 const navItems = [
   { name: 'Home', href: '/', isPage: true },
@@ -32,7 +33,10 @@ export default function Header() {
     }
   }, [])
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, isPage: boolean) => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, isPage: boolean, name: string) => {
+    // Track navigation click
+    trackNavigation(name, href, 'header')
+    
     if (isPage) {
       // Let the browser handle page navigation
       setIsMobileMenuOpen(false)
@@ -82,7 +86,7 @@ export default function Header() {
                 <a
                   key={item.name}
                   href={item.href}
-                  onClick={(e) => handleNavClick(e, item.href, item.isPage)}
+                  onClick={(e) => handleNavClick(e, item.href, item.isPage, item.name)}
                   className="text-sm lg:text-base font-medium text-gray-700 hover:text-primary-600 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg px-2 py-1"
                   aria-label={`Navigate to ${item.name}`}
                 >
@@ -119,7 +123,7 @@ export default function Header() {
                     key={item.name}
                     href={item.href}
                     onClick={(e) => {
-                      handleNavClick(e, item.href, item.isPage)
+                      handleNavClick(e, item.href, item.isPage, item.name)
                       setIsMobileMenuOpen(false)
                     }}
                     className="block py-3 text-base font-medium text-gray-700 hover:text-primary-600 transition-colors touch-manipulation"
