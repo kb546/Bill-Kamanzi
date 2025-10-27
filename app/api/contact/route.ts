@@ -86,9 +86,9 @@ export async function POST(request: NextRequest) {
 
     // Send email to you
     const { data: adminEmailData, error: adminError } = await resend.emails.send({
-      from: 'Portfolio Contact Form <onboarding@resend.dev>',
+      from: 'Portfolio Contact Form <info@bilkamanzi.com>',
       to: ['bikamanzi@gmail.com'],
-      subject: `🚀 New Project Inquiry - ${service}`,
+      subject: `New Project Inquiry - ${service}`,
       react: ContactFormEmail({
         name,
         email,
@@ -115,7 +115,7 @@ export async function POST(request: NextRequest) {
 
     // Send confirmation email to user
     const { error: userError } = await resend.emails.send({
-      from: 'Bill Kamanzi <onboarding@resend.dev>',
+      from: 'Bill Kamanzi <info@bilkamanzi.com>',
       to: [email],
       subject: "Thanks for reaching out! I'll get back to you within 24 hours.",
       react: ConfirmationEmail({
