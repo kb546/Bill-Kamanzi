@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://billkamanzi.com
+
+# Sitemaps
+Sitemap: https://billkamanzi.com/sitemap.xml

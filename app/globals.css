@@ -1,0 +1,250 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-inter: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply text-gray-900 antialiased;
+    background: linear-gradient(135deg, #ecfdf5 0%, #ffffff 50%, #f0f9ff 100%);
+    background-attachment: fixed;
+  }
+
+  /* Custom focus styles for accessibility */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-primary-500 ring-offset-2 rounded;
+  }
+}
+
+@layer components {
+  /* Glassmorphism utilities */
+  .glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  }
+
+  .glass-dark {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.1);
+  }
+
+  .glass-button {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  /* Glassmorphism card for Education & Experience sections */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    transition: all 0.3s ease;
+  }
+
+  .glass-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-600 via-primary-500 to-primary-400;
+  }
+
+  /* Animated mesh gradient background */
+  .mesh-gradient {
+    background: linear-gradient(-45deg, #ecfdf5, #ffffff, #f0f9ff, #f0fdfa);
+    background-size: 300% 300%;
+    animation: gradient 8s ease infinite;
+  }
+
+  /* Floating skill tags */
+  .tag-float {
+    @apply px-5 py-2.5 md:px-6 md:py-3 rounded-full font-bold text-sm md:text-base text-white shadow-xl cursor-pointer transition-all duration-300;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  }
+
+  .tag-marketing {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  }
+
+  .tag-data-science {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  }
+
+  .tag-web-dev {
+    background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+  }
+
+  .tag-float:hover {
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.25), 0 15px 20px -10px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Rotating circle animation */
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .rotate-circle {
+    animation: rotate 8s linear infinite;
+  }
+
+  .rotate-circle-fast {
+    animation: rotate 4s linear infinite;
+  }
+
+  /* Hero gradient circle animation - Elegant glassmorphism effect */
+  .hero-gradient-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 450px;
+    height: 450px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(173, 216, 230, 0.8) 0%, rgba(173, 216, 230, 0) 70%);
+    animation: circleGrow 6s ease-in-out infinite alternate;
+    z-index: 0;
+    filter: blur(20px);
+  }
+
+  @media (min-width: 768px) {
+    .hero-gradient-circle {
+      width: 600px;
+      height: 600px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-gradient-circle {
+      width: 800px;
+      height: 800px;
+    }
+  }
+
+  @keyframes circleGrow {
+    0% {
+      transform: translate(-50%, -50%) scale(0.95);
+      opacity: 0.9;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1.05);
+      opacity: 1;
+    }
+  }
+
+  /* Infinite scroll animation */
+  @keyframes infinite-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-infinite-scroll {
+    animation: infinite-scroll 40s linear infinite;
+  }
+
+  .animate-infinite-scroll:hover {
+    animation-play-state: paused;
+  }
+
+  /* Green-Blue Gradient System */
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  }
+  
+  .bg-gradient-cta {
+    background: linear-gradient(135deg, #10b981 0%, #0ea5e9 100%);
+  }
+  
+  .bg-gradient-accent {
+    background: linear-gradient(135deg, #0ea5e9 0%, #14b8a6 100%);
+  }
+  
+  .bg-gradient-hero {
+    background: linear-gradient(135deg, #ecfdf5 0%, #f0f9ff 50%, #f0fdfa 100%);
+  }
+
+  .text-gradient-primary {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-cta {
+    background: linear-gradient(135deg, #10b981 0%, #0ea5e9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
