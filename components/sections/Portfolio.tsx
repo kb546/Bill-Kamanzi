@@ -3,7 +3,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { ArrowUpRight } from 'lucide-react'
-import { getFeaturedProjects } from '@/lib/data/projectsReal'
+import { getFeaturedProjects, Project } from '@/lib/data/projectsReal'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -70,22 +70,7 @@ export default function Portfolio() {
 }
 
 interface ProjectCardProps {
-  project: {
-    id: string
-    slug: string
-    title: string
-    description: string
-    heroImage: string
-    logo: string
-    category: string[]
-    gradientFrom: string
-    gradientTo: string
-    results: {
-      metric: string
-      value: string
-      description: string
-    }[]
-  }
+  project: Project
   index: number
   isInView: boolean
 }
