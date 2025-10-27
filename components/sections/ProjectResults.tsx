@@ -56,7 +56,7 @@ export default function ProjectResults({ project }: ProjectResultsProps) {
         </div>
 
         {/* Social Links for Quackr */}
-        {project.social && (
+        {project.links && (
           <motion.div
             className="mt-16 text-center"
             initial={{ opacity: 0, y: 20 }}
@@ -65,9 +65,9 @@ export default function ProjectResults({ project }: ProjectResultsProps) {
           >
             <h3 className="text-2xl font-bold text-gray-900 mb-6">View Live Profiles</h3>
             <div className="flex flex-wrap justify-center gap-4">
-              {project.social.linkedin && (
+              {project.links.linkedin && (
                 <a
-                  href={project.social.linkedin}
+                  href={project.links.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-blue-600 text-white font-medium hover:bg-blue-700 transition-colors"
@@ -75,9 +75,9 @@ export default function ProjectResults({ project }: ProjectResultsProps) {
                   LinkedIn
                 </a>
               )}
-              {project.social.tiktok && (
+              {project.links.tiktok && (
                 <a
-                  href={project.social.tiktok}
+                  href={project.links.tiktok}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-black text-white font-medium hover:bg-gray-800 transition-colors"
@@ -85,9 +85,9 @@ export default function ProjectResults({ project }: ProjectResultsProps) {
                   TikTok
                 </a>
               )}
-              {project.social.youtube && (
+              {project.links.youtube && (
                 <a
-                  href={project.social.youtube}
+                  href={project.links.youtube}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-red-600 text-white font-medium hover:bg-red-700 transition-colors"
@@ -95,9 +95,9 @@ export default function ProjectResults({ project }: ProjectResultsProps) {
                   YouTube
                 </a>
               )}
-              {project.social.twitter && (
+              {project.links.twitter && (
                 <a
-                  href={project.social.twitter}
+                  href={project.links.twitter}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gray-900 text-white font-medium hover:bg-gray-800 transition-colors"
