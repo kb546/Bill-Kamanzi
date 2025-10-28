@@ -155,16 +155,9 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.6 }}
             >
               <a
-                href="#projects"
+                href="/projects"
                 className="group relative inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 min-h-[48px] rounded-2xl font-bold text-white bg-gradient-to-r from-primary-600 to-secondary-500 hover:from-primary-700 hover:to-secondary-600 shadow-lg hover:shadow-xl transition-all duration-200 overflow-hidden touch-manipulation"
-                onClick={(e) => {
-                  e.preventDefault()
-                  trackCTAClick('View Projects', 'hero')
-                  const projectsSection = document.getElementById('projects')
-                  if (projectsSection) {
-                    projectsSection.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' })
-                  }
-                }}
+                onClick={() => trackCTAClick('View Projects', 'hero')}
               >
                 <motion.span
                   className="relative z-10"
