@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://billkamanzi.com
+Host: https://www.bilkamanzi.com
 
 # Sitemaps
-Sitemap: https://billkamanzi.com/sitemap.xml
+Sitemap: https://www.bilkamanzi.com/sitemap.xml
