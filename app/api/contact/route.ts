@@ -6,45 +6,13 @@ import ConfirmationEmail from '@/lib/emails/ConfirmationEmail';
 const resendAPIKey = process.env.RESEND_API_KEY || '';
 const resend = resendAPIKey ? new Resend(resendAPIKey) : null;
 
-// Valid email domains
-const VALID_DOMAINS = [
-  'gmail.com',
-  'yahoo.com',
-  'outlook.com',
-  'hotmail.com',
-  'icloud.com',
-  'protonmail.com',
-  'live.com',
-  'msn.com',
-  'me.com',
-  'mac.com',
-  'aol.com',
-  'zoho.com',
-  'yandex.com',
-  'mail.com',
-  // Add more as needed
-];
-
 // Email validation regex
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-// Validate email format and domain
+// Validate email format
 function validateEmail(email: string): { valid: boolean; error?: string } {
   if (!email || !EMAIL_REGEX.test(email)) {
-    return { valid: false, error: 'Invalid email format' };
-  }
-
-  const domain = email.split('@')[1]?.toLowerCase();
-  
-  if (!domain) {
-    return { valid: false, error: 'Invalid email format' };
-  }
-
-  if (!VALID_DOMAINS.includes(domain)) {
-    return {
-      valid: false,
-      error: 'Please use a valid email provider (Gmail, Yahoo, Outlook, iCloud, etc.)',
-    };
+    return { valid: false, error: 'Please enter a valid email address' };
   }
 
   return { valid: true };

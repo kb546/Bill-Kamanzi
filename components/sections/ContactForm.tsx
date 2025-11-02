@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Send, CheckCircle, Mail, Phone, MapPin, AlertCircle } from 'lucide-react'
+import { Send, CheckCircle, Mail, Linkedin, MapPin, AlertCircle } from 'lucide-react'
 import { trackFormStart, trackFormSubmission, trackFormError } from '@/lib/utils/analytics'
 
 export default function ContactForm() {
@@ -25,40 +25,9 @@ export default function ContactForm() {
   // Email validation regex
   const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
-  // Valid email domains
-  const VALID_DOMAINS = [
-    'gmail.com',
-    'yahoo.com',
-    'outlook.com',
-    'hotmail.com',
-    'icloud.com',
-    'protonmail.com',
-    'live.com',
-    'msn.com',
-    'me.com',
-    'mac.com',
-    'aol.com',
-    'zoho.com',
-    'yandex.com',
-    'mail.com',
-  ]
-
   const validateEmail = (email: string): { valid: boolean; error?: string } => {
     if (!email || !EMAIL_REGEX.test(email)) {
-      return { valid: false, error: 'Invalid email format' }
-    }
-
-    const domain = email.split('@')[1]?.toLowerCase()
-
-    if (!domain) {
-      return { valid: false, error: 'Invalid email format' }
-    }
-
-    if (!VALID_DOMAINS.includes(domain)) {
-      return {
-        valid: false,
-        error: 'Please use a valid email provider (Gmail, Yahoo, Outlook, iCloud, etc.)',
-      }
+      return { valid: false, error: 'Please enter a valid email address' }
     }
 
     return { valid: true }
@@ -163,17 +132,19 @@ export default function ContactForm() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-secondary-500 to-accent-500 flex items-center justify-center">
-                  <Phone className="w-6 h-6 text-white" />
+              <div className="flex items-start gap-3 md:gap-4">
+                <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center">
+                  <Linkedin className="w-5 h-5 md:w-6 md:h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-1">Phone</h3>
+                  <h3 className="font-semibold text-gray-900 mb-1">LinkedIn</h3>
                   <a
-                    href="tel:+971508270514"
+                    href="https://www.linkedin.com/in/bill-kamanzi/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-primary-600 hover:text-primary-700 transition-colors"
                   >
-                    +971 50 827 0514
+                    Connect on LinkedIn
                   </a>
                 </div>
               </div>
@@ -196,8 +167,7 @@ export default function ContactForm() {
                 <h3 className="font-semibold text-gray-900">Quick Response</h3>
               </div>
               <p className="text-gray-700">
-                I typically respond within 24 hours. For urgent inquiries, feel free to call
-                directly.
+                I typically respond within 24 hours via email or LinkedIn.
               </p>
             </div>
           </motion.div>
