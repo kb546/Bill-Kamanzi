@@ -50,15 +50,8 @@ export default function LogoBrandingPage() {
           outcomes={service.outcomes}
           process={service.process}
         />
-        <ServiceFAQ
-          faqs={brandingFAQs}
-          gradientFrom={service.gradientFrom}
-          gradientTo={service.gradientTo}
-        />
-        <ServiceCTA
-          gradientFrom={service.gradientFrom}
-          gradientTo={service.gradientTo}
-        />
+        <ServiceFAQ faqs={brandingFAQs} />
+        <ServiceCTA />
       </main>
       <Footer />
     </>

@@ -50,15 +50,8 @@ export default function ProjectManagementPage() {
           outcomes={service.outcomes}
           process={service.process}
         />
-        <ServiceFAQ
-          faqs={projectManagementFAQs}
-          gradientFrom={service.gradientFrom}
-          gradientTo={service.gradientTo}
-        />
-        <ServiceCTA
-          gradientFrom={service.gradientFrom}
-          gradientTo={service.gradientTo}
-        />
+        <ServiceFAQ faqs={projectManagementFAQs} />
+        <ServiceCTA />
       </main>
       <Footer />
     </>

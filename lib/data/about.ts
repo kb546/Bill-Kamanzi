@@ -20,7 +20,7 @@ export interface Education {
 
 export const bio = {
   tagline: "Hi, I'm Bill Kamanzi — where data meets creativity.",
-  subtitle: "Performance Marketer • Data Scientist • Web Developer",
+  subtitle: "I help startups scale through data-driven marketing and modern web experiences",
   description: [
     "A dynamic Performance Marketer and Digital Marketing Specialist with expertise in driving growth through strategic campaigns and data-driven insights. With experience in SEO, social media management, content creation, and performance marketing, I help businesses scale effectively across digital platforms.",
     "Recent Computer Science Graduate at Rochester Institute of Technology, I've successfully transitioned into the marketing space, bringing analytical thinking and technical skills to create compelling campaigns that drive results.",

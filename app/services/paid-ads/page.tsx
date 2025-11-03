@@ -50,15 +50,8 @@ export default function PaidAdsPage() {
           outcomes={service.outcomes}
           process={service.process}
         />
-        <ServiceFAQ
-          faqs={paidAdsFAQs}
-          gradientFrom={service.gradientFrom}
-          gradientTo={service.gradientTo}
-        />
-        <ServiceCTA
-          gradientFrom={service.gradientFrom}
-          gradientTo={service.gradientTo}
-        />
+        <ServiceFAQ faqs={paidAdsFAQs} />
+        <ServiceCTA />
       </main>
       <Footer />
     </>

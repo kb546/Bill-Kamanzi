@@ -19,7 +19,7 @@ export default function ServicesMarquee() {
   const prefersReducedMotion = useReducedMotion()
 
   return (
-    <div className="relative w-full bg-gradient-to-r from-blue-500 to-blue-600 py-4 overflow-hidden">
+    <div className="relative w-full bg-gradient-to-r from-primary-600 to-primary-500 py-4 overflow-hidden">
       <div
         className={`flex whitespace-nowrap ${
           prefersReducedMotion ? '' : 'animate-marquee'

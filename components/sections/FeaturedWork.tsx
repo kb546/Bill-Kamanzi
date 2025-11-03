@@ -13,7 +13,7 @@ export default function FeaturedWork() {
   const featuredProjects = getFeaturedProjects()
 
   return (
-    <section id="projects" className="py-16 md:py-24 lg:py-32 bg-white">
+    <section id="projects" className="py-20 md:py-28 lg:py-32 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <motion.div

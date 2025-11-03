@@ -95,7 +95,7 @@ export default function ContactForm() {
   }
 
   return (
-    <section ref={ref} className="py-16 md:py-24 lg:py-32 bg-white">
+    <section ref={ref} className="py-20 md:py-28 lg:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 md:gap-12 lg:gap-16">
           {/* Left: Contact Info */}
@@ -118,7 +118,7 @@ export default function ContactForm() {
             {/* Contact Methods */}
             <div className="space-y-4 md:space-y-6">
               <div className="flex items-start gap-3 md:gap-4">
-                <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center">
+                <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-400 flex items-center justify-center">
                   <Mail className="w-5 h-5 md:w-6 md:h-6 text-white" />
                 </div>
                 <div>
@@ -133,7 +133,7 @@ export default function ContactForm() {
               </div>
 
               <div className="flex items-start gap-3 md:gap-4">
-                <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center">
+                <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-400 flex items-center justify-center">
                   <Linkedin className="w-5 h-5 md:w-6 md:h-6 text-white" />
                 </div>
                 <div>
@@ -161,7 +161,7 @@ export default function ContactForm() {
             </div>
 
             {/* Response Time */}
-            <div className="p-6 rounded-2xl bg-gradient-to-br from-primary-50 to-secondary-50 border border-primary-100">
+            <div className="p-6 rounded-2xl bg-gradient-to-br from-primary-50 to-primary-50 border border-primary-100">
               <div className="flex items-center gap-3 mb-2">
                 <CheckCircle className="w-6 h-6 text-accent-600" />
                 <h3 className="font-semibold text-gray-900">Quick Response</h3>
@@ -179,132 +179,163 @@ export default function ContactForm() {
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Name & Email Row */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-900 mb-2">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    required
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    onFocus={handleFormStart}
-                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:ring-4 focus:ring-primary-100 outline-none transition-all"
-                    placeholder="John Doe"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-900 mb-2">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    required
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    onFocus={handleFormStart}
-                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:ring-4 focus:ring-primary-100 outline-none transition-all"
-                    placeholder="john@example.com"
-                  />
+            <form onSubmit={handleSubmit} className="space-y-8">
+              {/* Contact Information Section */}
+              <div className="space-y-6">
+                <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
+                  <span className="w-1 h-6 bg-gradient-to-b from-primary-600 to-primary-500 rounded-full"></span>
+                  Contact Information
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-900 mb-2">
+                      Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      required
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      onFocus={handleFormStart}
+                      className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:ring-4 focus:ring-primary-100 outline-none transition-all"
+                      placeholder="e.g., John Doe"
+                      aria-describedby="name-help"
+                    />
+                    <p id="name-help" className="sr-only">Enter your full name</p>
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-900 mb-2">
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      required
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      onFocus={handleFormStart}
+                      className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:ring-4 focus:ring-primary-100 outline-none transition-all"
+                      placeholder="e.g., john@company.com"
+                      aria-describedby="email-help"
+                    />
+                    <p id="email-help" className="sr-only">Enter a valid email address</p>
+                  </div>
                 </div>
               </div>
 
-              {/* Service & Budget Row */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Project Details Section */}
+              <div className="space-y-6">
+                <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
+                  <span className="w-1 h-6 bg-gradient-to-b from-primary-600 to-primary-500 rounded-full"></span>
+                  Project Details
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="service" className="block text-sm font-medium text-gray-900 mb-2">
+                      Service Interested In *
+                    </label>
+                    <select
+                      id="service"
+                      required
+                      value={formData.service}
+                      onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:ring-4 focus:ring-primary-100 outline-none transition-all bg-white"
+                      aria-describedby="service-help"
+                    >
+                      <option value="">Select a service</option>
+                      <option value="web-development">Web Development</option>
+                      <option value="digital-marketing">Digital Marketing</option>
+                      <option value="paid-ads">Paid Ads Management</option>
+                      <option value="ui-ux-design">UI/UX Design</option>
+                      <option value="webflow">Webflow Development</option>
+                      <option value="branding">Logo & Branding</option>
+                      <option value="project-management">Project Management</option>
+                      <option value="other">Other/Multiple Services</option>
+                    </select>
+                    <p id="service-help" className="sr-only">Select the service you're interested in</p>
+                  </div>
+                  <div>
+                    <label htmlFor="budget" className="block text-sm font-medium text-gray-900 mb-2">
+                      Project Budget *
+                    </label>
+                    <select
+                      id="budget"
+                      required
+                      value={formData.budget}
+                      onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:ring-4 focus:ring-primary-100 outline-none transition-all bg-white"
+                      aria-describedby="budget-help"
+                    >
+                      <option value="">Select budget range</option>
+                      <option value="300-500">$300 - $500</option>
+                      <option value="500-1000">$500 - $1,000</option>
+                      <option value="custom">Custom Quote</option>
+                      <option value="not-sure">Not sure yet</option>
+                    </select>
+                    <p id="budget-help" className="sr-only">Select your project budget range</p>
+                  </div>
+                </div>
                 <div>
-                  <label htmlFor="service" className="block text-sm font-medium text-gray-900 mb-2">
-                    Service Interested In *
+                  <label htmlFor="timeline" className="block text-sm font-medium text-gray-900 mb-2">
+                    Project Timeline *
                   </label>
                   <select
-                    id="service"
+                    id="timeline"
                     required
-                    value={formData.service}
-                    onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:ring-4 focus:ring-primary-100 outline-none transition-all"
+                    value={formData.timeline}
+                    onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
+                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:ring-4 focus:ring-primary-100 outline-none transition-all bg-white"
+                    aria-describedby="timeline-help"
                   >
-                    <option value="">Select a service</option>
-                    <option value="web-development">Web Development</option>
-                    <option value="digital-marketing">Digital Marketing</option>
-                    <option value="paid-ads">Paid Ads Management</option>
-                    <option value="ui-ux-design">UI/UX Design</option>
-                    <option value="webflow">Webflow Development</option>
-                    <option value="branding">Logo & Branding</option>
-                    <option value="project-management">Project Management</option>
-                    <option value="other">Other/Multiple Services</option>
+                    <option value="">Select timeline</option>
+                    <option value="urgent">Urgent - Need it ASAP</option>
+                    <option value="2-4-weeks">2-4 weeks</option>
+                    <option value="flexible">Flexible - No rush</option>
                   </select>
+                  <p id="timeline-help" className="sr-only">Select when you need the project completed</p>
                 </div>
+              </div>
+
+              {/* Additional Details Section */}
+              <div className="space-y-6">
                 <div>
-                  <label htmlFor="budget" className="block text-sm font-medium text-gray-900 mb-2">
-                    Project Budget *
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-900 mb-2">
+                    <span>Project Details</span>
+                    <span className="text-gray-500 font-normal ml-2">(Optional - Help me understand your project better)</span>
                   </label>
-                  <select
-                    id="budget"
-                    required
-                    value={formData.budget}
-                    onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:ring-4 focus:ring-primary-100 outline-none transition-all"
-                  >
-                    <option value="">Select budget range</option>
-                    <option value="300-500">$300 - $500</option>
-                    <option value="500-1000">$500 - $1,000</option>
-                    <option value="custom">Custom Quote</option>
-                    <option value="not-sure">Not sure yet</option>
-                  </select>
+                  <textarea
+                    id="message"
+                    rows={4}
+                    maxLength={200}
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:ring-4 focus:ring-primary-100 outline-none transition-all resize-none"
+                    placeholder="Tell me about your project goals, target audience, key requirements, or any specific features you need..."
+                    aria-describedby="message-help message-count"
+                  />
+                  <div className="flex justify-between items-center mt-1">
+                    <p id="message-help" className="sr-only">Provide additional details about your project</p>
+                    <p id="message-count" className="text-sm text-gray-500">{formData.message.length}/200 characters</p>
+                  </div>
                 </div>
-              </div>
-
-              {/* Timeline */}
-              <div>
-                <label htmlFor="timeline" className="block text-sm font-medium text-gray-900 mb-2">
-                  Project Timeline *
-                </label>
-                <select
-                  id="timeline"
-                  required
-                  value={formData.timeline}
-                  onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:ring-4 focus:ring-primary-100 outline-none transition-all"
-                >
-                  <option value="">Select timeline</option>
-                  <option value="urgent">Urgent (ASAP)</option>
-                  <option value="2-4-weeks">2-4 weeks</option>
-                  <option value="flexible">Flexible</option>
-                </select>
-              </div>
-
-              {/* Message */}
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-900 mb-2">
-                  Project Details (Optional)
-                </label>
-                <textarea
-                  id="message"
-                  rows={4}
-                  maxLength={200}
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:ring-4 focus:ring-primary-100 outline-none transition-all resize-none"
-                  placeholder="Brief description of your project (max 200 characters)..."
-                />
-                <p className="text-sm text-gray-500 mt-1">{formData.message.length}/200 characters</p>
               </div>
 
               {/* Submit Button */}
               <motion.button
                 type="submit"
                 disabled={status === 'sending'}
-                className="w-full md:w-auto px-8 py-4 rounded-full font-bold text-white bg-gradient-to-r from-primary-600 to-secondary-500 hover:from-primary-700 hover:to-secondary-600 shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="w-full md:w-auto px-8 py-4 rounded-full font-bold text-white bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-700 hover:to-primary-600 shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 whileHover={{ scale: status === 'sending' ? 1 : 1.05 }}
                 whileTap={{ scale: status === 'sending' ? 1 : 0.95 }}
               >
                 {status === 'sending' ? (
                   <>
-                    <div className="w-5 h-5 border-3 border-white border-t-transparent rounded-full animate-spin" />
+                    <motion.div 
+                      className="w-5 h-5 border-3 border-white border-t-transparent rounded-full"
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 0.8, repeat: Infinity, ease: 'linear' }}
+                    />
                     Sending...
                   </>
                 ) : status === 'success' ? (

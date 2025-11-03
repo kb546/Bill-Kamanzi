@@ -152,6 +152,30 @@ export const trackGalleryInteraction = (projectName: string, imageIndex: number)
   });
 };
 
+// Section view tracking
+export function trackSectionView(sectionName: string) {
+  if (typeof window === 'undefined' || !window.gtag) return
+  
+  window.gtag('event', 'section_view', {
+    event_category: 'engagement',
+    event_label: sectionName,
+    value: 1,
+    page_path: window.location.pathname
+  })
+}
+
+// Metric view tracking
+export function trackMetricView(metricName: string) {
+  if (typeof window === 'undefined' || !window.gtag) return
+  
+  window.gtag('event', 'metric_view', {
+    event_category: 'engagement',
+    event_label: metricName,
+    value: 1,
+    page_path: window.location.pathname
+  })
+}
+
 // Assign lead value based on budget selection
 function assignLeadValue(budget: string): number {
   const budgetMap: Record<string, number> = {

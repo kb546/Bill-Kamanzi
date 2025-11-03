@@ -28,7 +28,7 @@ export default function ServiceDetails({
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section ref={ref} className="py-12 md:py-20 bg-white">
+    <section ref={ref} className="py-20 md:py-28 lg:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* What I Do Section */}
         <motion.div
@@ -37,7 +37,7 @@ export default function ServiceDetails({
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-h2-section md:text-h2-section-md lg:text-h2-section-lg font-bold text-gray-900 mb-4">
             {heading}
           </h2>
           <p className="text-base md:text-lg text-gray-700 leading-relaxed max-w-4xl">
@@ -52,7 +52,7 @@ export default function ServiceDetails({
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+          <h3 className="text-h3-subsection md:text-h3-subsection-md font-bold text-gray-900 mb-6">
             Key Features
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -81,7 +81,7 @@ export default function ServiceDetails({
           >
             <div className="flex items-center gap-3 mb-5">
               <Wrench className="w-6 h-6 text-primary-600" />
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-900">
+              <h3 className="text-h3-subsection md:text-h3-subsection-md font-bold text-gray-900">
                 Tools & Technologies
               </h3>
             </div>
@@ -108,7 +108,7 @@ export default function ServiceDetails({
           >
             <div className="flex items-center gap-3 mb-5">
               <TrendingUp className="w-6 h-6 text-primary-600" />
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-900">
+              <h3 className="text-h3-subsection md:text-h3-subsection-md font-bold text-gray-900">
                 Expected Outcomes
               </h3>
             </div>
@@ -132,7 +132,7 @@ export default function ServiceDetails({
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.7 }}
           >
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+            <h3 className="text-h3-subsection md:text-h3-subsection-md font-bold text-gray-900 mb-6">
               My Process
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">

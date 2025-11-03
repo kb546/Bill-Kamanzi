@@ -5,20 +5,15 @@ import { useRef } from 'react'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 
-interface ProjectCTAProps {
-  gradientFrom: string
-  gradientTo: string
-}
-
-export default function ProjectCTA({ gradientFrom, gradientTo }: ProjectCTAProps) {
+export default function ProjectCTA() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section ref={ref} className="py-20 md:py-32 bg-gray-50">
+    <section ref={ref} className="py-20 md:py-28 lg:py-32 bg-gray-50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.h2
-          className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+          className="text-h2-section md:text-h2-section-md lg:text-h2-section-lg font-bold text-gray-900 mb-6"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
@@ -43,7 +38,7 @@ export default function ProjectCTA({ gradientFrom, gradientTo }: ProjectCTAProps
         >
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center px-10 py-4 rounded-full font-bold text-white bg-gradient-to-r from-primary-600 to-secondary-500 hover:from-primary-700 hover:to-secondary-600 shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 group"
+            className="inline-flex items-center justify-center px-10 py-4 rounded-full font-bold text-white bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-700 hover:to-primary-600 shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 group"
           >
             Let's Work Together
             <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />

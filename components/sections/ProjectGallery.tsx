@@ -15,7 +15,7 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
 
   return (
-    <section ref={ref} className="py-20 md:py-32 bg-white">
+    <section ref={ref} className="py-20 md:py-28 lg:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-16"
@@ -23,7 +23,7 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Gallery</h2>
+          <h2 className="text-h2-section md:text-h2-section-md lg:text-h2-section-lg font-bold text-gray-900 mb-4">Gallery</h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
             Visual showcase of the project
           </p>

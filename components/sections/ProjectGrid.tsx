@@ -23,7 +23,7 @@ export default function ProjectGrid() {
   const projects = getProjectsByCategory(selectedCategory)
 
   return (
-    <section className="py-20 md:py-32 bg-white">
+    <section className="py-20 md:py-28 lg:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Category Filters */}
         <motion.div
@@ -38,7 +38,7 @@ export default function ProjectGrid() {
               onClick={() => setSelectedCategory(category)}
               className={`px-6 py-3 rounded-full font-medium text-sm transition-all duration-300 ${
                 selectedCategory === category
-                  ? 'bg-gradient-to-r from-primary-600 to-secondary-500 text-white shadow-lg'
+                  ? 'bg-gradient-to-r from-primary-600 to-primary-500 text-white shadow-lg'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
@@ -149,7 +149,7 @@ export default function ProjectGrid() {
                         <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${
                           hasBackgroundImage
                             ? 'bg-white/20 backdrop-blur-sm border border-white/30'
-                            : 'bg-gradient-to-r from-primary-600 to-secondary-500'
+                            : 'bg-gradient-to-r from-primary-600 to-primary-500'
                         }`}>
                           <span className={`text-lg font-bold ${
                             hasBackgroundImage ? 'text-white' : 'text-white'

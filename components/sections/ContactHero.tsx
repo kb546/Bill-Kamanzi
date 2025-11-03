@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 export default function ContactHero() {
   return (
-    <section className="relative py-24 md:py-32 lg:py-40 overflow-hidden bg-gradient-hero">
+    <section className="relative py-20 md:py-28 lg:py-32 overflow-hidden bg-gradient-hero">
       {/* Animated gradient circles */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
       <div
@@ -18,7 +18,7 @@ export default function ContactHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-gray-900 mb-6">
+          <h1 className="text-h1-hero md:text-h1-hero-md lg:text-h1-hero-lg font-bold text-gray-900 mb-6">
             Let's Build Something
             <span className="text-gradient-primary"> Amazing </span>
             Together

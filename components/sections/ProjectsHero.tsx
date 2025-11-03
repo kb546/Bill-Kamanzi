@@ -28,14 +28,14 @@ export default function ProjectsHero() {
       <div
         className="absolute top-1/2 left-1/2 w-[400px] h-[400px] md:w-[600px] md:h-[600px] lg:w-[800px] lg:h-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-20 blur-3xl animate-pulse"
         style={{
-          background: 'radial-gradient(circle, #10b981 0%, #0ea5e9 50%, transparent 70%)',
+          background: 'radial-gradient(circle, #10b981 0%, #34d399 50%, transparent 70%)',
         }}
       />
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
         <motion.h1
-          className="text-5xl sm:text-6xl md:text-7xl font-bold text-gray-900 mb-6"
+          className="text-h1-hero md:text-h1-hero-md lg:text-h1-hero-lg font-bold text-gray-900 mb-6"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -66,7 +66,7 @@ export default function ProjectsHero() {
                 key={index}
                 className="glass-card p-6 rounded-2xl flex flex-col items-center gap-3 hover:scale-105 transition-transform duration-300"
               >
-                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-primary-600 to-secondary-500 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-primary-600 to-primary-500 flex items-center justify-center">
                   <Icon className="w-6 h-6 text-white" />
                 </div>
                 <div className="text-center">

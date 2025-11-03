@@ -1,5 +1,12 @@
 import type { Variants } from 'framer-motion'
 
+/**
+ * Standardized Animation Timings
+ * - Entry animations: 0.6s (consistent, smooth reveal)
+ * - Hover states: 0.2s (snappy, responsive)
+ * - Transitions: 0.3s (smooth, balanced)
+ */
+
 // Fade in from bottom
 export const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -16,7 +23,7 @@ export const fadeInScale: Variants = {
   visible: { 
     opacity: 1, 
     scale: 1,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] }
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
   },
 }
 
@@ -106,7 +113,37 @@ export const hoverCard = {
 
 export const hoverImage = {
   scale: 1.05,
-  transition: { duration: 0.5, ease: 'easeOut' }
+  transition: { duration: 0.3, ease: 'easeOut' }
+}
+
+// Standard animation duration constants
+export const ANIMATION_DURATION = {
+  ENTRY: 0.6,      // Entry animations (fade in, slide in)
+  HOVER: 0.2,      // Hover states (buttons, links)
+  TRANSITION: 0.3, // General transitions (cards, images)
+} as const
+
+// Micro-interaction effects
+export const rippleEffect = {
+  scale: [1, 1.1, 1],
+  transition: { duration: 0.4, ease: 'easeOut' }
+}
+
+export const cardLift = {
+  y: -8,
+  scale: 1.02,
+  boxShadow: '0 20px 40px -10px rgba(0, 0, 0, 0.15)',
+  transition: { duration: 0.3, ease: 'easeOut' }
+}
+
+export const iconRotate = {
+  rotate: [0, 10, -10, 0],
+  transition: { duration: 0.5, ease: 'easeInOut' }
+}
+
+export const iconScale = {
+  scale: [1, 1.2, 1],
+  transition: { duration: 0.3, ease: 'easeOut' }
 }
 
 

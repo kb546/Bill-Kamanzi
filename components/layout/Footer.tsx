@@ -28,7 +28,7 @@ export default function Footer() {
   ]
 
   return (
-    <footer id="contact" className="bg-black text-white py-12 md:py-16">
+    <footer id="contact" className="bg-gray-50 text-gray-900 py-12 md:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content - 3 Columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-8 md:mb-12">
@@ -36,10 +36,10 @@ export default function Footer() {
           {/* Column 1: Brand & Social */}
           <div>
               <div className="flex items-center gap-2 sm:gap-3 mb-4">
-                <Logo variant="white" size="md" className="sm:scale-110" />
-                <span className="text-lg sm:text-xl font-bold">Bill Kamanzi</span>
+                <Logo variant="color" size="md" className="sm:scale-110" />
+                <span className="text-lg sm:text-xl font-bold text-gray-900">Bill Kamanzi</span>
               </div>
-              <p className="text-gray-400 text-sm mb-4 sm:mb-6 leading-relaxed max-w-sm">
+              <p className="text-gray-600 text-sm mb-4 sm:mb-6 leading-relaxed max-w-sm">
               Performance Marketer, Data Scientist & Web Developer creating 
               data-driven strategies and seamless digital experiences.
             </p>
@@ -51,12 +51,12 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackSocialClick('LinkedIn', 'https://www.linkedin.com/in/bill-kamanzi/')}
-                  className="w-12 h-12 rounded-full bg-gray-800 hover:bg-[#0A66C2] flex items-center justify-center transition-all duration-200 touch-manipulation"
+                  className="w-12 h-12 rounded-full bg-gray-200 hover:bg-[#0A66C2] flex items-center justify-center transition-all duration-200 touch-manipulation"
                   whileHover={{ scale: 1.1, y: -3 }}
                   whileTap={{ scale: 0.95 }}
                   aria-label="LinkedIn Profile"
                 >
-                  <Linkedin className="w-5 h-5 text-white" />
+                  <Linkedin className="w-5 h-5 text-gray-700 hover:text-white transition-colors" />
                 </motion.a>
                 
                 <motion.a
@@ -64,12 +64,12 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackSocialClick('Dribbble', 'https://dribbble.com/bill-kamanzi')}
-                  className="w-12 h-12 rounded-full bg-gray-800 hover:bg-pink-600 flex items-center justify-center transition-all duration-200 touch-manipulation"
+                  className="w-12 h-12 rounded-full bg-gray-200 hover:bg-pink-600 flex items-center justify-center transition-all duration-200 touch-manipulation"
                   whileHover={{ scale: 1.1, y: -3 }}
                   whileTap={{ scale: 0.95 }}
                   aria-label="Dribbble Profile"
                 >
-                  <DribbbleIcon className="w-5 h-5 text-white" />
+                  <DribbbleIcon className="w-5 h-5 text-gray-700 hover:text-white transition-colors" />
                 </motion.a>
                 
                 <motion.a
@@ -77,19 +77,19 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackSocialClick('GitHub', 'https://github.com/kb546')}
-                  className="w-12 h-12 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-all duration-200 touch-manipulation"
+                  className="w-12 h-12 rounded-full bg-gray-200 hover:bg-gray-800 flex items-center justify-center transition-all duration-200 touch-manipulation"
                   whileHover={{ scale: 1.1, y: -3 }}
                   whileTap={{ scale: 0.95 }}
                   aria-label="GitHub Profile"
                 >
-                  <Github className="w-5 h-5 text-white" />
+                  <Github className="w-5 h-5 text-gray-700 hover:text-white transition-colors" />
                 </motion.a>
             </div>
           </div>
           
           {/* Column 2: Quick Links */}
           <div>
-            <h4 className="text-sm font-bold uppercase mb-4 text-gray-300 tracking-wide">
+            <h4 className="text-sm font-bold uppercase mb-4 text-gray-700 tracking-wide">
               Quick Links
             </h4>
             <ul className="space-y-2">
@@ -98,7 +98,7 @@ export default function Footer() {
                   <Link 
                     href={link.href}
                     onClick={() => trackNavigation(link.name, link.href, 'footer')}
-                    className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
+                    className="text-gray-600 hover:text-primary-600 transition-colors duration-200 text-sm"
                   >
                     {link.name}
                   </Link>
@@ -109,7 +109,7 @@ export default function Footer() {
           
           {/* Column 3: Contact & CTA */}
           <div>
-            <h4 className="text-sm font-bold uppercase mb-4 text-gray-300 tracking-wide">
+            <h4 className="text-sm font-bold uppercase mb-4 text-gray-700 tracking-wide">
               Get In Touch
             </h4>
             <div className="space-y-4">
@@ -117,7 +117,7 @@ export default function Footer() {
                 <p className="text-gray-500 text-xs mb-1 uppercase tracking-wide">Email</p>
                 <a 
                   href={`mailto:${contact.email}`}
-                  className="text-white font-medium hover:text-primary-400 transition-colors duration-200"
+                  className="text-gray-900 font-medium hover:text-primary-600 transition-colors duration-200"
                 >
                   {contact.email}
                 </a>
@@ -125,14 +125,14 @@ export default function Footer() {
               
               <div>
                 <p className="text-gray-500 text-xs mb-1 uppercase tracking-wide">Based In</p>
-                <p className="text-white">Dubai, UAE</p>
+                <p className="text-gray-900">Dubai, UAE</p>
               </div>
               
                 {/* CTA Button */}
                 <Link
                   href="/contact"
                   onClick={() => trackCTAClick("Let's Work Together", 'footer')}
-                  className="inline-block w-full sm:w-auto text-center px-6 py-3 min-h-[44px] bg-gradient-to-r from-primary-600 to-secondary-500 
+                  className="inline-block w-full sm:w-auto text-center px-6 py-3 min-h-[44px] bg-gradient-to-r from-primary-600 to-primary-500 
                             rounded-lg font-bold hover:shadow-lg hover:shadow-primary-500/50 
                             transition-all duration-200 hover:scale-105 text-sm touch-manipulation"
                 >
@@ -143,10 +143,10 @@ export default function Footer() {
         </div>
         
         {/* Divider */}
-        <div className="border-t border-gray-800 mb-8"></div>
+        <div className="border-t border-gray-200 mb-8"></div>
         
         {/* Bottom Bar */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-600">
           <p>© {currentYear} Bill Kamanzi. All rights reserved.</p>
           <p>
             Made by Bill Kamanzi with{' '}

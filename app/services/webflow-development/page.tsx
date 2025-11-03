@@ -50,15 +50,8 @@ export default function WebflowDevelopmentPage() {
           outcomes={service.outcomes}
           process={service.process}
         />
-        <ServiceFAQ
-          faqs={webflowFAQs}
-          gradientFrom={service.gradientFrom}
-          gradientTo={service.gradientTo}
-        />
-        <ServiceCTA
-          gradientFrom={service.gradientFrom}
-          gradientTo={service.gradientTo}
-        />
+        <ServiceFAQ faqs={webflowFAQs} />
+        <ServiceCTA />
       </main>
       <Footer />
     </>

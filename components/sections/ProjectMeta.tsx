@@ -39,9 +39,9 @@ export default function ProjectMeta({ project }: ProjectMetaProps) {
 
       {/* Quackr-LTV Context Note */}
       {project.slug === 'quackr' && (
-        <div className="mt-6 p-4 bg-blue-50 border-l-4 border-blue-500 rounded-lg">
+        <div className="mt-6 p-4 bg-primary-50 border-l-4 border-primary-500 rounded-lg">
           <p className="text-sm text-gray-700 leading-relaxed">
-            <strong className="text-blue-700">Note:</strong> Quackr is a SaaS product owned by Long Tail Ventures, 
+            <strong className="text-primary-700">Note:</strong> Quackr is a SaaS product owned by Long Tail Ventures, 
             where I currently work as Performance Content Marketer. This project was part of 
             my role in launching and scaling the product's market presence.
           </p>
@@ -82,10 +82,10 @@ export default function ProjectMeta({ project }: ProjectMetaProps) {
           </h3>
           <a
             href={project.certificate.link}
-            className="block p-4 rounded-xl bg-gradient-to-r from-primary-50 to-secondary-50 hover:shadow-lg transition-all duration-200 group"
+            className="block p-4 rounded-xl bg-gradient-to-r from-primary-50 to-primary-100 hover:shadow-lg transition-all duration-200 group"
           >
             <div className="flex items-start gap-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-r from-primary-600 to-secondary-500 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-200">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-r from-primary-600 to-primary-500 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-200">
                 <Award className="w-5 h-5 text-white" />
               </div>
               <div className="flex-1">

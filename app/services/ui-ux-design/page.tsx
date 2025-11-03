@@ -50,15 +50,8 @@ export default function UIUXDesignPage() {
           outcomes={service.outcomes}
           process={service.process}
         />
-        <ServiceFAQ
-          faqs={uiUxDesignFAQs}
-          gradientFrom={service.gradientFrom}
-          gradientTo={service.gradientTo}
-        />
-        <ServiceCTA
-          gradientFrom={service.gradientFrom}
-          gradientTo={service.gradientTo}
-        />
+        <ServiceFAQ faqs={uiUxDesignFAQs} />
+        <ServiceCTA />
       </main>
       <Footer />
     </>

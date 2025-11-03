@@ -50,15 +50,8 @@ export default function DigitalMarketingPage() {
           outcomes={service.outcomes}
           process={service.process}
         />
-        <ServiceFAQ
-          faqs={digitalMarketingFAQs}
-          gradientFrom={service.gradientFrom}
-          gradientTo={service.gradientTo}
-        />
-        <ServiceCTA
-          gradientFrom={service.gradientFrom}
-          gradientTo={service.gradientTo}
-        />
+        <ServiceFAQ faqs={digitalMarketingFAQs} />
+        <ServiceCTA />
       </main>
       <Footer />
     </>

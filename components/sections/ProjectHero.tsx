@@ -11,7 +11,7 @@ interface ProjectHeroProps {
 
 export default function ProjectHero({ project }: ProjectHeroProps) {
   return (
-    <section className="relative py-16 md:py-20 lg:py-28 xl:py-32 flex items-center justify-center overflow-hidden bg-gray-50">
+    <section className="relative py-20 md:py-28 lg:py-32 flex items-center justify-center overflow-hidden bg-gray-50">
       {/* Circular Gradient Background (like service pages) */}
       <div
         className="absolute top-1/2 left-1/2 w-[300px] h-[300px] min-[375px]:w-[350px] min-[375px]:h-[350px] md:w-[450px] md:h-[450px] lg:w-[550px] lg:h-[550px] xl:w-[600px] xl:h-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-30 blur-3xl animate-pulse"
@@ -24,7 +24,7 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
         {/* Title */}
         <motion.h1
-          className="text-3xl min-[375px]:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 md:mb-8"
+          className="text-h1-hero md:text-h1-hero-md lg:text-h1-hero-lg font-bold text-gray-900 mb-6 md:mb-8"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}

@@ -49,6 +49,17 @@ const config: Config = {
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
       },
+      fontSize: {
+        // Consistent type scale system
+        'h1-hero': ['3rem', { lineHeight: '1.1', fontWeight: '700' }], // 48px
+        'h1-hero-md': ['3.75rem', { lineHeight: '1.1', fontWeight: '700' }], // 60px
+        'h1-hero-lg': ['4.5rem', { lineHeight: '1.1', fontWeight: '700' }], // 72px
+        'h2-section': ['2.25rem', { lineHeight: '1.2', fontWeight: '700' }], // 36px
+        'h2-section-md': ['3rem', { lineHeight: '1.2', fontWeight: '700' }], // 48px
+        'h2-section-lg': ['3.75rem', { lineHeight: '1.2', fontWeight: '700' }], // 60px
+        'h3-subsection': ['1.5rem', { lineHeight: '1.3', fontWeight: '600' }], // 24px
+        'h3-subsection-md': ['1.875rem', { lineHeight: '1.3', fontWeight: '600' }], // 30px
+      },
       lineHeight: {
         relaxed: '1.7',
       },

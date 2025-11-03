@@ -75,6 +75,7 @@ export const projects: Project[] = [
     logo: '/images/projects/quackr/quackr-logo-light.png',
     logoVariant: 'light',
     cardLogo: '/images/projects/quackr/quackr-logo.png',
+    backgroundImage: '/images/projects/quackr/1.png', // Added for consistent card styling
     images: [
       '/images/projects/quackr/1.png',
       '/images/projects/quackr/2.png',

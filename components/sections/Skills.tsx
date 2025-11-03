@@ -10,7 +10,7 @@ export default function Skills() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="skills" className="py-20 md:py-32 relative">
+    <section id="skills" className="py-20 md:py-28 lg:py-32 relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -19,7 +19,7 @@ export default function Skills() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-h2-section md:text-h2-section-md lg:text-h2-section-lg font-bold text-gray-900 mb-4">
             Skills & Expertise
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">

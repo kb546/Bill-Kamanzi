@@ -17,7 +17,7 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://billkamanzi.com'),
+  metadataBase: new URL('https://bilkamanzi.com'),
   title: 'Bill Kamanzi | Performance Marketer, Data Scientist, Web Developer',
   description: 'Performance Marketer, Data Scientist, and Web Developer specializing in data-driven growth strategies, digital marketing, and web development.',
   keywords: ['Performance Marketing', 'Data Science', 'Web Development', 'Digital Marketing', 'SEO', 'Analytics'],
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://billkamanzi.com',
+    url: 'https://bilkamanzi.com',
     siteName: 'Bill Kamanzi Portfolio',
     title: 'Bill Kamanzi | Performance Marketer, Data Scientist, Web Developer',
     description: 'Performance Marketer, Data Scientist, and Web Developer specializing in data-driven growth strategies.',
@@ -74,6 +74,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body className="font-sans" suppressHydrationWarning>
+        {/* Skip to main content link for keyboard accessibility */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary-600 focus:text-white focus:rounded-lg focus:font-semibold focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+        >
+          Skip to main content
+        </a>
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-K93XMJT428"

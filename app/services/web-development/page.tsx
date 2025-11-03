@@ -50,15 +50,8 @@ export default function WebDevelopmentPage() {
           outcomes={service.outcomes}
           process={service.process}
         />
-        <ServiceFAQ
-          faqs={webDevFAQs}
-          gradientFrom={service.gradientFrom}
-          gradientTo={service.gradientTo}
-        />
-        <ServiceCTA
-          gradientFrom={service.gradientFrom}
-          gradientTo={service.gradientTo}
-        />
+        <ServiceFAQ faqs={webDevFAQs} />
+        <ServiceCTA />
       </main>
       <Footer />
     </>

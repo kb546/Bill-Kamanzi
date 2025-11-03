@@ -24,7 +24,7 @@ const skillTags = [
     className: 'tag-data-science', 
     position: 'bottom-24 -left-20', 
     rotation: -5,
-    shadowColor: 'rgba(59, 130, 246, 0.4)'
+    shadowColor: 'rgba(16, 185, 129, 0.4)'
   },
   { 
     id: 3, 
@@ -114,14 +114,14 @@ export default function Hero() {
           >
             {/* Headline */}
             <motion.h1
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-4"
+              className="text-h1-hero md:text-h1-hero-md lg:text-h1-hero-lg mb-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <span className="text-gray-900">Hey there,</span>
+              <span className="text-gray-900">Hi,</span>
               <br />
-              <span className="text-gray-900">I Am </span>
+              <span className="text-gray-900">I'm </span>
               <span className="gradient-text font-extrabold">Bill Kamanzi</span>
             </motion.h1>
 
@@ -149,37 +149,54 @@ export default function Hero() {
 
             {/* CTA Buttons */}
             <motion.div
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
+              {/* Primary CTA - View Projects */}
               <a
                 href="/projects"
-                className="group relative inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 min-h-[48px] rounded-2xl font-bold text-white bg-gradient-to-r from-primary-600 to-secondary-500 hover:from-primary-700 hover:to-secondary-600 shadow-lg hover:shadow-xl transition-all duration-200 overflow-hidden touch-manipulation"
+                className="group relative inline-flex items-center justify-center w-full sm:w-auto px-10 py-5 min-h-[52px] rounded-2xl font-bold text-white bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-700 hover:to-primary-600 shadow-xl hover:shadow-2xl transition-all duration-200 overflow-hidden touch-manipulation text-lg"
                 onClick={() => trackCTAClick('View Projects', 'hero')}
               >
                 <motion.span
-                  className="relative z-10"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  className="relative z-10 flex items-center gap-2"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                 >
                   View Projects
+                  <motion.svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    initial={{ x: 0 }}
+                    whileHover={{ x: 4 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2.5}
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    />
+                  </motion.svg>
                 </motion.span>
               </a>
 
+              {/* Secondary CTA - Download CV */}
               <a
                 href="/images/Bill-Kamanzi-Resume.pdf"
                 download
                 onClick={() => trackDownload('Bill-Kamanzi-Resume.pdf', 'Download CV')}
-                className="group relative inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 min-h-[48px] rounded-2xl font-bold text-gray-700 bg-white border-2 border-gray-300 hover:border-gray-400 shadow-md hover:shadow-lg transition-all duration-200 touch-manipulation"
+                className="group relative inline-flex items-center justify-center w-full sm:w-auto px-6 py-4 min-h-[48px] rounded-2xl font-semibold text-gray-700 bg-white border-2 border-gray-300 hover:border-gray-400 hover:bg-gray-50 shadow-sm hover:shadow-md transition-all duration-200 touch-manipulation text-base"
               >
                 <motion.span
                   className="relative z-10 flex items-center gap-2"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                 >
-                  Download CV
                   <svg
                     className="w-4 h-4"
                     fill="none"
@@ -193,6 +210,7 @@ export default function Hero() {
                       d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                     />
                   </svg>
+                  Download CV
                 </motion.span>
               </a>
             </motion.div>
@@ -280,7 +298,7 @@ export default function Hero() {
                       isCircleHovered ? 'rotate-circle-fast' : 'rotate-circle'
                     }`}
                     style={{
-                      background: 'linear-gradient(135deg, #10b981 0%, #0ea5e9 100%)',
+                      background: 'linear-gradient(135deg, #059669 0%, #10b981 100%)',
                     }}
                   >
                     {/* Circular text */}
@@ -311,14 +329,14 @@ export default function Hero() {
                       }
                       transition={{ duration: 0.3 }}
                     >
-                      <ArrowUpRight className="w-5 h-5 md:w-6 md:h-6 text-purple-600" />
+                      <ArrowUpRight className="w-5 h-5 md:w-6 md:h-6 text-primary-600" />
                     </motion.div>
                   </div>
 
                   {/* Glow effect on hover */}
                   {isCircleHovered && !prefersReducedMotion && (
                     <motion.div
-                      className="absolute inset-0 rounded-full bg-purple-400 opacity-40 blur-xl"
+                      className="absolute inset-0 rounded-full bg-primary-400 opacity-40 blur-xl"
                       initial={{ scale: 0.8, opacity: 0 }}
                       animate={{ scale: 1.2, opacity: 0.4 }}
                       transition={{ duration: 0.3 }}

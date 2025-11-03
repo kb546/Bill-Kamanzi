@@ -56,7 +56,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         <ProjectResults project={project} />
         {project.images.length > 1 && <ProjectGallery project={project} />}
         <MoreProjects currentProjectId={project.id} />
-        <ProjectCTA gradientFrom={project.gradientFrom} gradientTo={project.gradientTo} />
+        <ProjectCTA />
       </main>
       <Footer />
     </>

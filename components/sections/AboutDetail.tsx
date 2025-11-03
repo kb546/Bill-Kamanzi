@@ -10,7 +10,7 @@ export default function AboutDetail() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section className="py-20 md:py-32 bg-white">
+    <section className="py-20 md:py-28 lg:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
           ref={ref}
@@ -23,7 +23,7 @@ export default function AboutDetail() {
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="relative bg-red-500 rounded-3xl shadow-2xl max-w-md w-full overflow-visible">
+            <div className="relative bg-primary-500 rounded-3xl shadow-2xl max-w-md w-full overflow-visible">
               <motion.div
                 className="relative aspect-[3/4] w-full overflow-hidden rounded-3xl"
                 whileHover={{ scale: 1.02 }}
@@ -38,16 +38,16 @@ export default function AboutDetail() {
                 />
               </motion.div>
 
-              {/* Experience badge */}
+              {/* Experience badge - Positioned below portrait */}
               <motion.div
-                className="absolute top-[50%] left-[15%] -translate-y-1/2 bg-blue-500 text-white px-10 py-4 md:px-12 md:py-5 rounded-full shadow-2xl transform -rotate-12 z-20"
+                className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-primary-600 text-white px-8 py-3 md:px-10 md:py-4 rounded-full shadow-xl z-20"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
-                whileHover={{ scale: 1.05, rotate: -15 }}
+                whileHover={{ scale: 1.05 }}
               >
-                <span className="font-bold text-lg md:text-xl whitespace-nowrap">
-                  1+ Experience
+                <span className="font-bold text-base md:text-lg whitespace-nowrap">
+                  1+ Years Experience
                 </span>
               </motion.div>
             </div>
@@ -62,7 +62,7 @@ export default function AboutDetail() {
           >
             {/* Name Heading */}
             <motion.h2
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900"
+              className="text-h2-section md:text-h2-section-md lg:text-h2-section-lg font-bold text-gray-900"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -87,7 +87,7 @@ export default function AboutDetail() {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+              <h3 className="text-h3-subsection md:text-h3-subsection-md font-bold text-gray-900 mb-4">
                 {aboutPageContent.journey.heading}
               </h3>
               <p className="text-base md:text-lg text-gray-700 leading-relaxed">
@@ -101,7 +101,7 @@ export default function AboutDetail() {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.6, delay: 0.7 }}
             >
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+              <h3 className="text-h3-subsection md:text-h3-subsection-md font-bold text-gray-900 mb-4">
                 {aboutPageContent.philosophy.heading}
               </h3>
               <p className="text-base md:text-lg text-gray-700 leading-relaxed">

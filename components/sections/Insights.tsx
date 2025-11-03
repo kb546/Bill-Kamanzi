@@ -12,7 +12,7 @@ const quotes = [
 
 export default function Insights() {
   return (
-    <section className="py-16 glass-card overflow-hidden">
+    <section className="py-20 md:py-28 lg:py-32 glass-card overflow-hidden">
       <div className="relative">
         {/* Scrolling Marquee */}
         <motion.div

@@ -48,7 +48,7 @@ export default function StickyCTA() {
         >
           <Link href="/contact" onClick={() => trackCTAClick('Get Started', 'sticky_cta')}>
             <motion.button
-              className="group relative flex items-center gap-2 px-6 py-4 bg-gradient-to-r from-primary-600 to-secondary-500 
+              className="group relative flex items-center gap-2 px-6 py-4 bg-gradient-to-r from-primary-600 to-primary-500 
                          text-white rounded-full shadow-2xl hover:shadow-primary-500/50 transition-all duration-200
                          font-bold text-base touch-manipulation"
               whileHover={{ scale: 1.05 }}

@@ -13,7 +13,7 @@ export default function Portfolio() {
   const projects = getFeaturedProjects(3) // Get first 3 projects
 
   return (
-    <section id="portfolio" className="py-20 md:py-32 relative bg-white">
+    <section id="portfolio" className="py-20 md:py-28 lg:py-32 relative bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <motion.div
@@ -22,7 +22,7 @@ export default function Portfolio() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+          <h2 className="text-h2-section md:text-h2-section-md lg:text-h2-section-lg font-bold text-gray-900 mb-6">
             Featured Projects
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -54,7 +54,7 @@ export default function Portfolio() {
         >
           <Link
             href="/projects"
-            className="inline-flex items-center justify-center px-10 py-4 rounded-full font-bold text-white bg-gradient-to-r from-primary-600 to-secondary-500 hover:from-primary-700 hover:to-secondary-600 shadow-lg hover:shadow-xl transition-all duration-200"
+            className="inline-flex items-center justify-center px-10 py-4 rounded-full font-bold text-white bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-700 hover:to-primary-600 shadow-lg hover:shadow-xl transition-all duration-200"
           >
             <motion.span
               whileHover={{ scale: 1.05 }}
@@ -86,9 +86,14 @@ function ProjectCard({ project, index, isInView }: ProjectCardProps) {
         initial={{ opacity: 0, y: 30 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
         transition={{ duration: 0.5, delay: 0.1 * index }}
-        whileHover={{ y: -8, boxShadow: '0 20px 40px rgba(0,0,0,0.15)' }}
+        whileHover={{
+          y: -8,
+          scale: 1.02,
+          boxShadow: '0 20px 40px -10px rgba(5, 150, 105, 0.15)',
+          transition: { duration: 0.3, ease: 'easeOut' }
+        }}
       >
-        {/* Background - Image for BC/UVC, Clean for Quackr */}
+        {/* Background - Image with dark overlay for consistent styling */}
         {hasBackgroundImage ? (
           <>
             <Image
@@ -101,7 +106,7 @@ function ProjectCard({ project, index, isInView }: ProjectCardProps) {
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30" />
           </>
         ) : (
-          /* Clean white background for Quackr */
+          /* Fallback white background if no image provided */
           <div className="absolute inset-0 bg-white" />
         )}
 
@@ -156,7 +161,7 @@ function ProjectCard({ project, index, isInView }: ProjectCardProps) {
 
             {/* Category Tags */}
             <div className="flex flex-wrap gap-2 mb-3 sm:mb-4">
-              {project.category.slice(0, 2).map((cat) => (
+              {project.category.slice(0, 3).map((cat) => (
                 <span
                   key={cat}
                   className={`px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium rounded-full ${
@@ -171,26 +176,26 @@ function ProjectCard({ project, index, isInView }: ProjectCardProps) {
             </div>
 
             {/* Description */}
-            <p className={`text-sm sm:text-base mb-3 sm:mb-4 line-clamp-2 ${
+            <p className={`text-sm sm:text-base mb-3 sm:mb-4 line-clamp-3 ${
               hasBackgroundImage ? 'text-white/90' : 'text-gray-600'
             }`}>
               {project.description}
             </p>
 
-            {/* Key Metric Badge */}
+            {/* Key Metric Badge - More Prominent */}
             {project.results.length > 0 && (
-              <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${
+              <div className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full shadow-lg ${
                 hasBackgroundImage
-                  ? 'bg-white/20 backdrop-blur-sm border border-white/30'
-                  : 'bg-gradient-to-r from-primary-600 to-secondary-500'
+                  ? 'bg-white/25 backdrop-blur-md border-2 border-white/40'
+                  : 'bg-gradient-to-r from-primary-600 to-primary-500 shadow-primary-500/30'
               }`}>
-                <span className={`text-lg font-bold ${
+                <span className={`text-xl font-bold ${
                   hasBackgroundImage ? 'text-white' : 'text-white'
                 }`}>
                   {project.results[0].value}
                 </span>
-                <span className={`text-sm ${
-                  hasBackgroundImage ? 'text-white/80' : 'text-white/90'
+                <span className={`text-sm font-semibold ${
+                  hasBackgroundImage ? 'text-white/90' : 'text-white/95'
                 }`}>
                   {project.results[0].metric}
                 </span>
