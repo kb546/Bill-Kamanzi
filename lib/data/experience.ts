@@ -1,4 +1,4 @@
-import { calculateTenure } from '@/lib/utils/tenure'
+import { formatTenureDisplay } from '@/lib/utils/tenure'
 
 export interface Experience {
   id: string
@@ -94,17 +94,13 @@ export const companyBrandColors: Record<string, string> = {
 }
 
 /**
- * Enhanced experience data with auto-calculated tenure for current roles
- * Only shows the calculated display string (e.g., "Mar 2025 – Present · 8 months")
+ * Enhanced experience data with formatted dates for all roles
+ * Shows date range with duration (e.g., "Mar 2025 – Present · 8 months" or "Jan 2025 – Mar 2025 · 3 months")
  */
 export const experienceWithTenure = experienceData.map(exp => {
-  if (exp.endDate === 'Present') {
-    const tenure = calculateTenure(exp.startDate, 'Present')
-    return {
-      ...exp,
-      duration: tenure.display  // "Mar 2025 – Present · 8 months"
-    }
+  return {
+    ...exp,
+    duration: formatTenureDisplay(exp.startDate, exp.endDate)
   }
-  return exp
 })
 
