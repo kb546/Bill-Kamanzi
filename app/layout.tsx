@@ -1,12 +1,16 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter } from 'next/font/google'
+import localFont from 'next/font/local'
 import Script from 'next/script'
 import './globals.css'
-import StickyCTA from '@/components/ui/StickyCTA'
 
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
+const satoshi = localFont({
+  src: [
+    { path: './fonts/Satoshi-Regular.woff2', weight: '400', style: 'normal' },
+    { path: './fonts/Satoshi-Medium.woff2', weight: '500', style: 'normal' },
+    { path: './fonts/Satoshi-Bold.woff2', weight: '700', style: 'normal' },
+    { path: './fonts/Satoshi-Black.woff2', weight: '900', style: 'normal' },
+  ],
+  variable: '--font-satoshi',
   display: 'swap',
 })
 
@@ -18,16 +22,14 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://bilkamanzi.com'),
-  title: 'Bill Kamanzi | Performance Marketer, Data Scientist, Web Developer',
-  description: 'Performance Marketer, Data Scientist, and Web Developer specializing in data-driven growth strategies, digital marketing, and web development.',
-  keywords: ['Performance Marketing', 'Data Science', 'Web Development', 'Digital Marketing', 'SEO', 'Analytics'],
+  title: 'Bill Kamanzi | Product Builder',
+  description: 'I build products at the intersection of code, data, and marketing. Creator of ArbHunter and Cravd.',
+  keywords: ['Product Builder', 'Full-Stack Developer', 'SaaS', 'Next.js', 'Performance Marketing', 'Data Science'],
   authors: [{ name: 'Bill Kamanzi' }],
   creator: 'Bill Kamanzi',
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' },
-      { url: '/favicon.svg', sizes: '32x32' },
-      { url: '/favicon.svg', sizes: '16x16' },
     ],
     apple: '/favicon.svg',
   },
@@ -35,9 +37,9 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://bilkamanzi.com',
-    siteName: 'Bill Kamanzi Portfolio',
-    title: 'Bill Kamanzi | Performance Marketer, Data Scientist, Web Developer',
-    description: 'Performance Marketer, Data Scientist, and Web Developer specializing in data-driven growth strategies.',
+    siteName: 'Bill Kamanzi',
+    title: 'Bill Kamanzi | Product Builder',
+    description: 'I build products at the intersection of code, data, and marketing.',
     images: [
       {
         url: '/images/profile.png',
@@ -49,8 +51,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Bill Kamanzi | Performance Marketer, Data Scientist, Web Developer',
-    description: 'Performance Marketer, Data Scientist, and Web Developer specializing in data-driven growth strategies.',
+    title: 'Bill Kamanzi | Product Builder',
+    description: 'I build products at the intersection of code, data, and marketing.',
     images: ['/images/profile.png'],
   },
   robots: {
@@ -72,16 +74,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={satoshi.variable}>
       <body className="font-sans" suppressHydrationWarning>
-        {/* Skip to main content link for keyboard accessibility */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary-600 focus:text-white focus:rounded-lg focus:font-semibold focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-accent focus:text-white focus:rounded-lg focus:font-semibold focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
         >
           Skip to main content
         </a>
-        {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-K93XMJT428"
           strategy="afterInteractive"
@@ -94,11 +94,8 @@ export default function RootLayout({
             gtag('config', 'G-K93XMJT428');
           `}
         </Script>
-
         {children}
-        <StickyCTA />
       </body>
     </html>
   )
 }
-

@@ -19,14 +19,14 @@ export interface Education {
 }
 
 export const bio = {
-  tagline: "Hi, I'm Bill Kamanzi — where data meets creativity.",
-  subtitle: "I help startups scale through data-driven marketing and modern web experiences",
+  tagline: "I build products.",
+  subtitle: "Product builder crafting tools at the intersection of code, data, and marketing",
   description: [
-    "A dynamic Performance Marketer and Digital Marketing Specialist with expertise in driving growth through strategic campaigns and data-driven insights. With experience in SEO, social media management, content creation, and performance marketing, I help businesses scale effectively across digital platforms.",
-    "Recent Computer Science Graduate at Rochester Institute of Technology, I've successfully transitioned into the marketing space, bringing analytical thinking and technical skills to create compelling campaigns that drive results.",
-    "My approach combines creative storytelling with performance analytics, managing teams and campaigns for SaaS products, catering services, and technical companies to deliver measurable business growth.",
+    "I'm a product builder based in Dubai. I ship software that solves real problems, combining full-stack development with performance marketing and data analysis.",
+    "I built ArbHunter, an AI-powered ad arbitrage platform. I'm currently building Cravd, a social food rating app for Dubai. Before that, I scaled Quackr's social media to ~1M views at Long Tail Ventures.",
+    "CS graduate from Rochester Institute of Technology. I believe in shipping fast, learning from users, and building in public.",
   ],
-  journey: "From Data Science → to Development → to Growth Strategy",
+  journey: "From CS → to Data Science → to Building Products",
 }
 
 export const metrics = [
