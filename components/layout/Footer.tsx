@@ -10,11 +10,11 @@ const socialLinks = [
 export default function Footer() {
   return (
     <footer className="border-t border-border">
-      <div className="max-w-5xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
         <p className="text-sm text-text-muted">
           &copy; {new Date().getFullYear()} Bill Kamanzi
         </p>
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-4 sm:gap-6">
           {socialLinks.map((link) => (
             <a
               key={link.label}

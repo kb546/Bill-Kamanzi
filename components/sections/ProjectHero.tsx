@@ -22,7 +22,7 @@ export default function ProjectHero({ project }: { project: Project }) {
 
   return (
     <section className="pt-32 pb-16 md:pt-40 md:pb-20">
-      <div className="max-w-5xl mx-auto px-6">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <nav className="flex items-center gap-2 text-sm text-text-muted mb-8" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-text-primary transition-colors">Home</Link>
           <ChevronRight className="w-3.5 h-3.5" />
@@ -31,7 +31,7 @@ export default function ProjectHero({ project }: { project: Project }) {
           <span className="text-text-primary">{project.title}</span>
         </nav>
 
-        <div className="flex items-center gap-4 mb-2">
+        <div className="flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:gap-4 mb-2">
           {project.logo && (
             <Image
               src={project.logo}
@@ -41,11 +41,11 @@ export default function ProjectHero({ project }: { project: Project }) {
               className="rounded-lg object-contain"
             />
           )}
-          <h1 className="font-display text-hero-sm md:text-hero text-text-primary">{project.title}</h1>
+          <h1 className="font-display text-2xl sm:text-hero-sm md:text-hero text-text-primary">{project.title}</h1>
         </div>
-        <p className="text-body-lg text-text-secondary mt-4 max-w-2xl">{project.description}</p>
+        <p className="text-base sm:text-body-lg text-text-secondary mt-4 max-w-2xl">{project.description}</p>
 
-        <div className="flex flex-wrap gap-3 mt-6">
+        <div className="flex flex-wrap gap-2 sm:gap-3 mt-4 sm:mt-6">
           {project.category.slice(0, 4).map((cat) => (
             <span key={cat} className="px-3 py-1 text-xs font-medium bg-accent-muted text-accent rounded-full">
               {cat}
@@ -68,7 +68,7 @@ export default function ProjectHero({ project }: { project: Project }) {
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium border border-border-strong text-text-primary hover:border-accent hover:text-accent transition-colors rounded-lg"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium border border-border-strong text-text-primary hover:border-accent hover:text-accent transition-colors rounded-lg"
                 >
                   <Icon className="w-4 h-4" />
                   {info.label}

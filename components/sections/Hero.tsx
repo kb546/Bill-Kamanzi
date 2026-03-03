@@ -7,9 +7,9 @@ import TextReveal from '@/components/ui/TextReveal'
 
 export default function Hero() {
   return (
-    <section className="min-h-screen flex items-center pt-16">
-      <div className="max-w-5xl mx-auto px-6 py-24 md:py-32">
-        <div className="grid md:grid-cols-[1fr_auto] gap-12 items-center">
+    <section className="pt-32 md:pt-40">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 pb-20 md:pb-32">
+        <div className="flex flex-col-reverse md:grid md:grid-cols-[1fr_auto] gap-8 md:gap-12 items-center">
           <div>
             <TextReveal
               text="Full-Stack Developer & Growth Marketer"
@@ -46,18 +46,18 @@ export default function Hero() {
           </div>
 
           <motion.div
-            className="hidden md:block"
+            className="mx-auto md:mx-0"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut' }}
           >
-            <div className="relative w-[260px] h-[260px] rounded-2xl overflow-hidden">
+            <div className="relative w-[120px] h-[120px] sm:w-[180px] sm:h-[180px] md:w-[260px] md:h-[260px] rounded-2xl overflow-hidden">
               <Image
                 src="/images/profile-pic-bill.png"
                 alt="Bill Kamanzi - Full-Stack Developer and Growth Marketer"
                 fill
                 className="object-cover"
-                sizes="260px"
+                sizes="(max-width: 640px) 120px, (max-width: 768px) 180px, 260px"
                 priority
               />
             </div>

@@ -28,7 +28,7 @@ export default function Header() {
         scrolled ? 'bg-bg-surface/95 backdrop-blur-sm border-b border-border' : 'bg-transparent'
       }`}
     >
-      <nav className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between relative">
+      <nav className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between relative">
         {/* Left: Logo */}
         <Link href="/" className="flex items-center gap-2 z-10 hover:opacity-80 transition-opacity">
           <Image
@@ -70,10 +70,10 @@ export default function Header() {
           <ThemeToggle />
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="text-text-secondary hover:text-text-primary"
+            className="flex items-center justify-center min-w-11 min-h-11 text-text-secondary hover:text-text-primary"
             aria-label="Toggle menu"
           >
-            {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </nav>
@@ -81,13 +81,13 @@ export default function Header() {
       {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden bg-bg-surface border-t border-border">
-          <div className="px-6 py-4 space-y-3">
+          <div className="px-4 sm:px-6 py-4 space-y-3 max-h-[calc(100vh-4rem)] overflow-y-auto">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
                 onClick={() => setMenuOpen(false)}
-                className="block text-sm text-text-secondary hover:text-text-primary transition-colors py-2"
+                className="block text-sm text-text-secondary hover:text-text-primary transition-colors py-3"
               >
                 {item.label}
               </a>

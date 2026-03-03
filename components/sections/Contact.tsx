@@ -14,9 +14,9 @@ const links = [
 export default function Contact() {
   return (
     <section id="contact" className="py-24 md:py-32">
-      <div className="max-w-5xl mx-auto px-6">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <AnimateOnScroll>
-          <div className="bg-accent rounded-2xl md:rounded-3xl px-8 py-16 md:px-16 md:py-20 text-center">
+          <div className="bg-accent rounded-2xl md:rounded-3xl px-4 py-12 sm:px-8 sm:py-16 md:px-16 md:py-20 text-center">
             <p className="text-white/70 font-medium mb-4 text-sm uppercase tracking-wider">Say hi</p>
             <TextReveal
               text="Got an idea? Let's make it real."
@@ -36,7 +36,7 @@ export default function Contact() {
               Drop me a line
             </a>
 
-            <div className="mt-10 flex flex-wrap justify-center gap-6">
+            <div className="mt-10 flex flex-wrap justify-center gap-4 sm:gap-6">
               {links.map((link) => (
                 <a
                   key={link.label}

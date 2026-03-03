@@ -9,7 +9,7 @@ export default function ProjectCard({ project }: { project: Project }) {
 
   return (
     <Link href={href} className="group block">
-      <div className="relative bg-bg-surface border border-border clip-corner p-6 md:p-8 transition-all duration-200 hover:border-accent/40 hover:-translate-y-1 overflow-hidden">
+      <div className="relative bg-bg-surface border border-border clip-corner p-4 sm:p-6 md:p-8 transition-all duration-200 hover:border-accent/40 hover:-translate-y-1 overflow-hidden">
         {/* Blue accent top line */}
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-accent/0 group-hover:bg-accent transition-all duration-300" />
 
@@ -35,7 +35,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         </div>
 
         {topResult && (
-          <p className="text-2xl font-bold text-accent mb-3">
+          <p className="text-xl sm:text-2xl font-bold text-accent mb-3">
             {topResult.value}
             <span className="text-sm font-medium text-text-muted ml-2">{topResult.metric}</span>
           </p>

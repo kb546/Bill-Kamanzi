@@ -10,7 +10,7 @@ export default function Projects() {
 
   return (
     <section id="projects" className="py-24 md:py-32 bg-accent-section">
-      <div className="max-w-5xl mx-auto px-6">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <div>
           <TextReveal
             text="Work"
@@ -29,7 +29,7 @@ export default function Projects() {
           />
         </div>
 
-        <div className="mt-12 grid md:grid-cols-2 gap-6">
+        <div className="mt-12 grid md:grid-cols-2 gap-4 sm:gap-6">
           {featured.map((project, i) => (
             <AnimateOnScroll key={project.id} delay={i * 0.1}>
               <ProjectCard project={project} />

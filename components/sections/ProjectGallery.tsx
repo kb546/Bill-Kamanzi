@@ -14,11 +14,11 @@ export default function ProjectGallery({ project }: { project: Project }) {
   return (
     <>
       <section className="py-16 md:py-24 border-t border-border">
-        <div className="max-w-5xl mx-auto px-6">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <AnimateOnScroll>
             <h2 className="font-display text-xl font-bold text-text-primary mb-8">Gallery</h2>
           </AnimateOnScroll>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
             {project.images.map((img, i) => (
               <AnimateOnScroll key={i} delay={i * 0.05}>
                 <button
@@ -95,7 +95,7 @@ function Lightbox({
       {/* Close button */}
       <button
         onClick={onClose}
-        className="absolute top-4 right-4 z-10 p-2 text-white/70 hover:text-white transition-colors"
+        className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10 p-3 text-white/70 hover:text-white transition-colors"
         aria-label="Close"
       >
         <X className="w-6 h-6" />
@@ -110,7 +110,7 @@ function Lightbox({
       {images.length > 1 && (
         <button
           onClick={(e) => { e.stopPropagation(); goPrev() }}
-          className="absolute left-4 z-10 p-2 text-white/70 hover:text-white transition-colors"
+          className="absolute left-2 sm:left-4 z-10 p-3 text-white/70 hover:text-white transition-colors"
           aria-label="Previous image"
         >
           <ChevronLeft className="w-8 h-8" />
@@ -136,7 +136,7 @@ function Lightbox({
       {images.length > 1 && (
         <button
           onClick={(e) => { e.stopPropagation(); goNext() }}
-          className="absolute right-4 z-10 p-2 text-white/70 hover:text-white transition-colors"
+          className="absolute right-2 sm:right-4 z-10 p-3 text-white/70 hover:text-white transition-colors"
           aria-label="Next image"
         >
           <ChevronRight className="w-8 h-8" />

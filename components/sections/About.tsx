@@ -10,7 +10,7 @@ import ExperienceTimeline from '@/components/sections/ExperienceTimeline'
 export default function About() {
   return (
     <section id="about" className="py-24 md:py-32">
-      <div className="max-w-5xl mx-auto px-6">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <div>
           <TextReveal
             text="About"
@@ -29,9 +29,9 @@ export default function About() {
           />
         </div>
 
-        <div className="mt-12 grid md:grid-cols-[280px_1fr] gap-12">
+        <div className="mt-12 grid md:grid-cols-[280px_1fr] gap-8 md:gap-12">
           <AnimateOnScroll delay={0.1}>
-            <div className="relative w-full aspect-square max-w-[280px] rounded-2xl overflow-hidden bg-bg-surface">
+            <div className="relative w-full aspect-square max-w-[200px] sm:max-w-[280px] mx-auto md:mx-0 rounded-2xl overflow-hidden bg-bg-surface">
               <Image
                 src="/images/profile.jpg"
                 alt="Bill Kamanzi portrait"

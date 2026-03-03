@@ -16,7 +16,7 @@ export default function Button({
   external,
   ...props
 }: ButtonProps) {
-  const base = 'inline-flex items-center justify-center px-6 py-3 font-medium text-sm transition-colors duration-200 clip-corner-sm'
+  const base = 'inline-flex items-center justify-center px-5 py-3 sm:px-6 font-medium text-sm transition-colors duration-200 clip-corner-sm'
 
   const variants = {
     primary: 'bg-accent text-white hover:bg-accent-hover',

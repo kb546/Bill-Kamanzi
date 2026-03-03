@@ -17,7 +17,7 @@ export default function BackToTop() {
   return (
     <button
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-      className="fixed bottom-6 right-6 z-40 p-3 bg-bg-surface border border-border rounded-full text-text-secondary hover:text-accent hover:border-accent transition-colors duration-200"
+      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 p-3 bg-bg-surface border border-border rounded-full text-text-secondary hover:text-accent hover:border-accent transition-colors duration-200"
       aria-label="Back to top"
     >
       <ChevronUp className="w-5 h-5" />

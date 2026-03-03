@@ -54,7 +54,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         <ProjectResults project={project} />
         <ProjectGallery project={project} />
 
-        <div className="max-w-5xl mx-auto px-6 py-16 border-t border-border">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-16 border-t border-border">
           <Link
             href="/#projects"
             className="inline-flex items-center gap-2 text-text-secondary hover:text-accent transition-colors"

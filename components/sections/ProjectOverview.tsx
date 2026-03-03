@@ -4,7 +4,7 @@ import AnimateOnScroll from '@/components/ui/AnimateOnScroll'
 export default function ProjectOverview({ project }: { project: Project }) {
   return (
     <section className="py-16 md:py-24">
-      <div className="max-w-5xl mx-auto px-6 space-y-16">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 space-y-16">
         {/* Overview */}
         <AnimateOnScroll>
           <h2 className="font-display text-xl font-bold text-text-primary mb-4">Overview</h2>
@@ -26,9 +26,9 @@ export default function ProjectOverview({ project }: { project: Project }) {
 
         {/* Challenges & Solutions */}
         {project.challenges && project.solutions && (
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
             <AnimateOnScroll>
-              <div className="p-6 bg-bg-surface border border-border clip-corner h-full">
+              <div className="p-4 sm:p-6 bg-bg-surface border border-border clip-corner h-full">
                 <h3 className="text-lg font-bold text-text-primary mb-4">Challenges</h3>
                 <ul className="space-y-3">
                   {project.challenges.map((c, i) => (
@@ -41,7 +41,7 @@ export default function ProjectOverview({ project }: { project: Project }) {
               </div>
             </AnimateOnScroll>
             <AnimateOnScroll delay={0.1}>
-              <div className="p-6 bg-accent clip-corner h-full">
+              <div className="p-4 sm:p-6 bg-accent clip-corner h-full">
                 <h3 className="text-lg font-bold text-white mb-4">Solutions</h3>
                 <ul className="space-y-3">
                   {project.solutions.map((s, i) => (
@@ -62,7 +62,7 @@ export default function ProjectOverview({ project }: { project: Project }) {
             <h2 className="font-display text-xl font-bold text-text-primary mb-4">Technologies</h2>
             <div className="flex flex-wrap gap-2">
               {project.technologies.map((tech) => (
-                <span key={tech} className="px-4 py-2 text-sm bg-bg-surface border border-border rounded-full text-text-secondary">
+                <span key={tech} className="px-3 py-1.5 text-xs sm:text-sm sm:px-4 sm:py-2 bg-bg-surface border border-border rounded-full text-text-secondary">
                   {tech}
                 </span>
               ))}

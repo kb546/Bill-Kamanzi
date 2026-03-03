@@ -115,7 +115,7 @@ function TimelineCard({
       animate={isInView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
     >
-      <div className="bg-bg-surface border border-border p-5 clip-corner hover:border-accent/30 transition-colors">
+      <div className="bg-bg-surface border border-border p-4 sm:p-5 clip-corner hover:border-accent/30 transition-colors">
         {entry.current && (
           <span className="inline-block px-2.5 py-0.5 text-xs font-medium bg-accent-muted text-accent rounded-full mb-3">
             Current
