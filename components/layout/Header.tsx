@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
 import ThemeToggle from '@/components/ui/ThemeToggle'
 
@@ -27,13 +28,21 @@ export default function Header() {
         scrolled ? 'bg-bg-surface/95 backdrop-blur-sm border-b border-border' : 'bg-transparent'
       }`}
     >
-      <nav className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link href="/" className="text-lg font-bold text-text-primary hover:text-accent transition-colors">
-          BK
+      <nav className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between relative">
+        {/* Left: Logo */}
+        <Link href="/" className="flex items-center gap-2 z-10 hover:opacity-80 transition-opacity">
+          <Image
+            src="/images/profile-pic-bill.png"
+            alt=""
+            width={32}
+            height={32}
+            className="rounded-full object-cover"
+          />
+          <span className="text-lg font-bold text-text-primary">Bill K.</span>
         </Link>
 
-        {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-8">
+        {/* Center: Nav links (desktop) */}
+        <div className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
           {navItems.map((item) => (
             <a
               key={item.href}
@@ -43,6 +52,10 @@ export default function Header() {
               {item.label}
             </a>
           ))}
+        </div>
+
+        {/* Right: Toggle + CTA (desktop) */}
+        <div className="hidden md:flex items-center gap-4 z-10">
           <ThemeToggle />
           <a
             href="mailto:bikamanzi@gmail.com"
@@ -52,7 +65,7 @@ export default function Header() {
           </a>
         </div>
 
-        {/* Mobile toggle */}
+        {/* Mobile: Toggle + Hamburger */}
         <div className="flex items-center gap-2 md:hidden">
           <ThemeToggle />
           <button

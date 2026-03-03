@@ -1,7 +1,8 @@
 'use client'
 
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { useRef, useState } from 'react'
+import { motion, useInView, useScroll, useTransform, useSpring, useMotionValueEvent } from 'framer-motion'
+import type { MotionValue } from 'framer-motion'
 import { useReducedMotion } from '@/lib/hooks/useReducedMotion'
 import type { TimelineEntry } from '@/lib/data/about'
 
@@ -9,31 +10,47 @@ function TimelineNode({
   entry,
   index,
   isLast,
+  scrollProgress,
+  totalEntries,
 }: {
   entry: TimelineEntry
   index: number
   isLast: boolean
+  scrollProgress: MotionValue<number>
+  totalEntries: number
 }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-80px' })
   const prefersReducedMotion = useReducedMotion()
   const isLeft = index % 2 === 0
+  const [isActive, setIsActive] = useState(entry.current ?? false)
+
+  useMotionValueEvent(scrollProgress, 'change', (latest) => {
+    if (entry.current) return
+    const threshold = (index + 0.3) / totalEntries
+    const shouldBeActive = latest >= threshold
+    if (shouldBeActive !== isActive) setIsActive(shouldBeActive)
+  })
+
+  const nodeActiveClass = isActive
+    ? 'bg-accent border-2 border-accent'
+    : 'bg-bg border-2 border-border-strong'
+
+  const nodeActiveDesktopClass = isActive
+    ? 'bg-accent border-2 border-accent shadow-[0_0_12px_rgba(60,113,236,0.4)]'
+    : 'bg-bg border-2 border-border-strong'
 
   return (
     <div ref={ref} className="relative flex items-stretch">
-      {/* Mobile: line + node on left */}
+      {/* Mobile: node column */}
       <div className="flex flex-col items-center flex-shrink-0 w-8 md:hidden">
         <motion.div
-          className={`w-3 h-3 rounded-full flex-shrink-0 mt-6 ${
-            entry.current
-              ? 'bg-accent border-2 border-accent'
-              : 'bg-bg border-2 border-border-strong'
-          }`}
+          className={`w-3 h-3 rounded-full flex-shrink-0 mt-6 z-10 transition-colors duration-500 ${nodeActiveClass}`}
           initial={prefersReducedMotion ? {} : { scale: 0 }}
           animate={isInView ? { scale: 1 } : {}}
           transition={{ duration: 0.3 }}
         />
-        {!isLast && <div className="w-px bg-border flex-1 min-h-[2rem]" />}
+        {!isLast && <div className="flex-1 min-h-[2rem]" />}
       </div>
 
       {/* Mobile: content */}
@@ -54,19 +71,15 @@ function TimelineNode({
         )}
       </div>
 
-      {/* Desktop: center line + node */}
+      {/* Desktop: center node column */}
       <div className="hidden md:flex flex-col items-center flex-shrink-0 w-10">
         <motion.div
-          className={`w-4 h-4 rounded-full flex-shrink-0 mt-6 ${
-            entry.current
-              ? 'bg-accent border-2 border-accent shadow-[0_0_12px_rgba(60,113,236,0.4)]'
-              : 'bg-bg border-2 border-border-strong'
-          }`}
+          className={`w-4 h-4 rounded-full flex-shrink-0 mt-6 z-10 transition-all duration-500 ${nodeActiveDesktopClass}`}
           initial={prefersReducedMotion ? {} : { scale: 0 }}
           animate={isInView ? { scale: 1 } : {}}
           transition={{ duration: 0.3, delay: 0.05 }}
         />
-        {!isLast && <div className="w-px bg-border flex-1 min-h-[2rem]" />}
+        {!isLast && <div className="flex-1 min-h-[2rem]" />}
       </div>
 
       {/* Right content area */}
@@ -102,16 +115,16 @@ function TimelineCard({
       animate={isInView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
     >
-      <div className="bg-bg-surface border border-border p-5 clip-corner hover:border-border-strong transition-colors">
+      <div className="bg-bg-surface border border-border p-5 clip-corner hover:border-accent/30 transition-colors">
         {entry.current && (
           <span className="inline-block px-2.5 py-0.5 text-xs font-medium bg-accent-muted text-accent rounded-full mb-3">
             Current
           </span>
         )}
-        <h4 className="text-base font-bold text-text-primary leading-snug">{entry.title}</h4>
+        <h4 className="font-display text-base font-bold text-text-primary leading-snug">{entry.title}</h4>
         <p className="text-sm font-medium text-accent mt-1">{entry.company}</p>
         <p className="text-xs text-text-muted mt-1">
-          {entry.startDate} — {entry.endDate} · {entry.location}
+          {entry.startDate} - {entry.endDate} · {entry.location}
         </p>
         {entry.description && (
           <p className="text-sm text-text-secondary mt-3 leading-relaxed">
@@ -142,15 +155,65 @@ function TimelineCard({
   )
 }
 
-export default function ExperienceTimeline({ entries }: { entries: TimelineEntry[] }) {
+function ScrollRevealLine({ smoothProgress }: { smoothProgress: MotionValue<number> }) {
+  const prefersReducedMotion = useReducedMotion()
+
+  const lineHeight = useTransform(smoothProgress, [0, 1], ['0%', '100%'])
+
+  if (prefersReducedMotion) {
+    return (
+      <>
+        <div className="absolute left-[15px] top-0 bottom-0 w-[2px] bg-accent/30 md:hidden" />
+        <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[2px] bg-accent/30 hidden md:block" />
+      </>
+    )
+  }
+
   return (
-    <div className="relative">
+    <>
+      {/* Static track lines (faint background) */}
+      <div className="absolute left-[15px] top-0 bottom-0 w-[2px] bg-border/15 md:hidden" />
+      <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[2px] bg-border/15 hidden md:block" />
+
+      {/* Mobile animated fill line */}
+      <motion.div
+        className="absolute left-[15px] top-0 w-[2px] bg-accent md:hidden"
+        style={{ height: lineHeight }}
+      />
+      {/* Desktop animated fill line */}
+      <motion.div
+        className="absolute left-1/2 -translate-x-1/2 top-0 w-[2px] bg-accent hidden md:block"
+        style={{ height: lineHeight }}
+      />
+    </>
+  )
+}
+
+export default function ExperienceTimeline({ entries }: { entries: TimelineEntry[] }) {
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start 0.8', 'end 0.2'],
+  })
+
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  })
+
+  return (
+    <div ref={containerRef} className="relative">
+      <ScrollRevealLine smoothProgress={smoothProgress} />
       {entries.map((entry, i) => (
         <TimelineNode
           key={entry.id}
           entry={entry}
           index={i}
           isLast={i === entries.length - 1}
+          scrollProgress={smoothProgress}
+          totalEntries={entries.length}
         />
       ))}
     </div>

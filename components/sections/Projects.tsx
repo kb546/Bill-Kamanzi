@@ -1,19 +1,33 @@
+'use client'
+
 import { projects } from '@/lib/data/projectsReal'
 import ProjectCard from '@/components/ui/ProjectCard'
 import AnimateOnScroll from '@/components/ui/AnimateOnScroll'
+import TextReveal from '@/components/ui/TextReveal'
 
 export default function Projects() {
-  const featured = projects.slice(0, 4)
+  const featured = projects
 
   return (
-    <section id="projects" className="py-24 md:py-32">
+    <section id="projects" className="py-24 md:py-32 bg-accent-section">
       <div className="max-w-5xl mx-auto px-6">
-        <AnimateOnScroll>
-          <p className="text-accent font-medium mb-4">Projects</p>
-          <h2 className="text-section-sm md:text-section text-text-primary">
-            Things I&apos;ve built.
-          </h2>
-        </AnimateOnScroll>
+        <div>
+          <TextReveal
+            text="Work"
+            as="p"
+            className="text-accent font-medium mb-4"
+            mode="scramble"
+          />
+          <TextReveal
+            text="Things I've shipped."
+            as="h2"
+            className="font-display text-section-sm md:text-section text-text-primary"
+            mode="words"
+            delay={0.2}
+            highlightWords={['shipped.']}
+            highlightClass="text-accent"
+          />
+        </div>
 
         <div className="mt-12 grid md:grid-cols-2 gap-6">
           {featured.map((project, i) => (

@@ -39,14 +39,14 @@ export interface Education {
 }
 
 export const bio = {
-  tagline: "I build products.",
-  subtitle: "Product builder crafting tools at the intersection of code, data, and marketing",
+  tagline: "I build things people actually use.",
+  subtitle: "Vibe coder, marketer, and full-time shipper",
   description: [
-    "I'm a product builder based in Dubai. I ship software that solves real problems, combining full-stack development with performance marketing and data analysis.",
-    "I built ArbHunter, an AI-powered ad arbitrage platform. I'm currently building Cravd, a social food rating app for Dubai. Before that, I scaled Quackr's social media to ~1M views at Long Tail Ventures.",
-    "CS graduate from Rochester Institute of Technology. I believe in shipping fast, learning from users, and building in public.",
+    "I'm Bill Kamanzi, a full-stack developer and growth marketer based in Dubai who builds products at the intersection of code, data, and marketing. The best products come from people who can't decide if they're developers or creatives. That's me.",
+    "I built ArbHunter, an AI platform that finds ad arbitrage opportunities before your morning coffee gets cold. Currently building Cravd, because Dubai's food scene deserves better than a 5-star rating system. As a performance marketer and SEO strategist, I don't just build products, I grow them.",
+    "RIT CS grad. Firm believer in shipping first, perfecting later, and letting the product do the talking.",
   ],
-  journey: "From CS → to Data Science → to Building Products",
+  journey: "From debugging → to deploying dreams",
 }
 
 export const metrics = [
@@ -163,7 +163,7 @@ export const timelineData: TimelineEntry[] = [
   },
   {
     id: 'ltv-trainee',
-    title: 'Trainee — Performance Marketing & Data Analysis',
+    title: 'Trainee - Performance Marketing & Data Analysis',
     company: 'Long Tail Ventures',
     location: 'Dubai, UAE',
     startDate: 'January 2025',
@@ -214,7 +214,7 @@ export const contact = {
   linkedin: 'https://www.linkedin.com/in/billkamanzi',
   github: 'https://github.com/kb546',
   facebook: 'https://www.facebook.com/billkamanzi',
-  twitter: 'https://twitter.com/billkamanzi',
+  x: 'https://x.com/billkamanzi',
   instagram: 'https://www.instagram.com/billkamanzi',
 }
 

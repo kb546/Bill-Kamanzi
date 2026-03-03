@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowUpRight } from 'lucide-react'
 import type { Project } from '@/lib/data/projectsReal'
 
@@ -8,13 +9,27 @@ export default function ProjectCard({ project }: { project: Project }) {
 
   return (
     <Link href={href} className="group block">
-      <div className="bg-bg-surface border border-border clip-corner p-6 md:p-8 transition-all duration-200 hover:border-border-strong hover:-translate-y-1">
+      <div className="relative bg-bg-surface border border-border clip-corner p-6 md:p-8 transition-all duration-200 hover:border-accent/40 hover:-translate-y-1 overflow-hidden">
+        {/* Blue accent top line */}
+        <div className="absolute top-0 left-0 right-0 h-[2px] bg-accent/0 group-hover:bg-accent transition-all duration-300" />
+
         <div className="flex items-start justify-between mb-4">
-          <div>
-            <h3 className="text-xl font-bold text-text-primary group-hover:text-accent transition-colors">
-              {project.title}
-            </h3>
-            <p className="text-sm text-text-muted mt-1">{project.year}</p>
+          <div className="flex items-center gap-3">
+            {project.logo && (
+              <Image
+                src={project.logo}
+                alt=""
+                width={36}
+                height={36}
+                className="rounded object-contain flex-shrink-0"
+              />
+            )}
+            <div>
+              <h3 className="font-display text-xl font-bold text-text-primary group-hover:text-accent transition-colors">
+                {project.title}
+              </h3>
+              <p className="text-sm text-text-muted mt-1">{project.year}</p>
+            </div>
           </div>
           <ArrowUpRight className="w-5 h-5 text-text-muted group-hover:text-accent transition-colors flex-shrink-0 mt-1" />
         </div>

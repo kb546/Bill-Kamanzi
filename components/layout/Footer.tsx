@@ -3,7 +3,7 @@ import { contact } from '@/lib/data/about'
 const socialLinks = [
   { label: 'LinkedIn', href: contact.linkedin },
   { label: 'GitHub', href: contact.github },
-  { label: 'Twitter', href: contact.twitter },
+  { label: 'X', href: contact.x },
   { label: 'Instagram', href: contact.instagram },
 ]
 

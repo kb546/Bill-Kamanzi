@@ -11,7 +11,8 @@
     --color-border-strong: #D4D4D4;
     --color-accent: #3c71ec;
     --color-accent-hover: #2b5ad4;
-    --color-accent-muted: rgba(60, 113, 236, 0.08);
+    --color-accent-muted: rgba(60, 113, 236, 0.06);
+    --color-accent-section: rgba(60, 113, 236, 0.03);
     --color-text-primary: #171717;
     --color-text-secondary: #525252;
     --color-text-muted: #737373;
@@ -26,6 +27,7 @@
     --color-accent: #3c71ec;
     --color-accent-hover: #2b5ad4;
     --color-accent-muted: rgba(60, 113, 236, 0.1);
+    --color-accent-section: rgba(60, 113, 236, 0.04);
     --color-text-primary: #F5F5F5;
     --color-text-secondary: #A0A0A0;
     --color-text-muted: #666666;
@@ -52,6 +54,7 @@
     @apply bg-bg text-text-primary antialiased;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   *:focus-visible {

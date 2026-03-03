@@ -1,11 +1,14 @@
+'use client'
+
 import { contact } from '@/lib/data/about'
 import { ArrowUpRight } from 'lucide-react'
 import AnimateOnScroll from '@/components/ui/AnimateOnScroll'
+import TextReveal from '@/components/ui/TextReveal'
 
 const links = [
   { label: 'LinkedIn', href: contact.linkedin },
   { label: 'GitHub', href: contact.github },
-  { label: 'Twitter', href: contact.twitter },
+  { label: 'X', href: contact.x },
 ]
 
 export default function Contact() {
@@ -13,31 +16,41 @@ export default function Contact() {
     <section id="contact" className="py-24 md:py-32">
       <div className="max-w-5xl mx-auto px-6">
         <AnimateOnScroll>
-          <p className="text-accent font-medium mb-4">Contact</p>
-          <h2 className="text-section-sm md:text-section text-text-primary max-w-lg">
-            Let&apos;s build something.
-          </h2>
-          <a
-            href={`mailto:${contact.email}`}
-            className="inline-block mt-6 text-xl md:text-2xl font-medium text-text-primary hover:text-accent transition-colors border-b border-border-strong hover:border-accent pb-1"
-          >
-            {contact.email}
-          </a>
-        </AnimateOnScroll>
-
-        <AnimateOnScroll delay={0.1} className="mt-10 flex flex-wrap gap-6">
-          {links.map((link) => (
+          <div className="bg-accent rounded-2xl md:rounded-3xl px-8 py-16 md:px-16 md:py-20 text-center">
+            <p className="text-white/70 font-medium mb-4 text-sm uppercase tracking-wider">Say hi</p>
+            <TextReveal
+              text="Got an idea? Let's make it real."
+              as="h2"
+              className="font-display text-section-sm md:text-section text-white max-w-lg mx-auto"
+              mode="chars"
+              delay={0.2}
+            />
+            <p className="text-white/70 mt-4 max-w-md mx-auto">
+              Always down to chat about products, startups,
+              or why your favorite restaurant is overrated.
+            </p>
             <a
-              key={link.label}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-text-secondary hover:text-accent transition-colors"
+              href={`mailto:${contact.email}`}
+              className="inline-block mt-8 px-8 py-3.5 text-sm font-medium bg-white text-accent hover:bg-white/90 transition-colors rounded-lg clip-corner-sm"
             >
-              {link.label}
-              <ArrowUpRight className="w-4 h-4" />
+              Drop me a line
             </a>
-          ))}
+
+            <div className="mt-10 flex flex-wrap justify-center gap-6">
+              {links.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-white/70 hover:text-white transition-colors text-sm"
+                >
+                  {link.label}
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </a>
+              ))}
+            </div>
+          </div>
         </AnimateOnScroll>
       </div>
     </section>

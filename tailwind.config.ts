@@ -22,6 +22,7 @@ const config: Config = {
           DEFAULT: 'var(--color-accent)',
           hover: 'var(--color-accent-hover)',
           muted: 'var(--color-accent-muted)',
+          section: 'var(--color-accent-section)',
         },
         text: {
           primary: 'var(--color-text-primary)',
@@ -31,6 +32,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['var(--font-satoshi)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-display)', 'var(--font-satoshi)', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         'hero': ['4rem', { lineHeight: '1.05', fontWeight: '800', letterSpacing: '-0.02em' }],

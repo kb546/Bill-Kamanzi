@@ -14,6 +14,16 @@ const satoshi = localFont({
   display: 'swap',
 })
 
+const generalSans = localFont({
+  src: [
+    { path: './fonts/GeneralSans-Medium.woff2', weight: '500', style: 'normal' },
+    { path: './fonts/GeneralSans-Semibold.woff2', weight: '600', style: 'normal' },
+    { path: './fonts/GeneralSans-Bold.woff2', weight: '700', style: 'normal' },
+  ],
+  variable: '--font-display',
+  display: 'swap',
+})
+
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
@@ -22,37 +32,37 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://bilkamanzi.com'),
-  title: 'Bill Kamanzi | Product Builder',
-  description: 'I build products at the intersection of code, data, and marketing. Creator of ArbHunter and Cravd.',
-  keywords: ['Product Builder', 'Full-Stack Developer', 'SaaS', 'Next.js', 'Performance Marketing', 'Data Science'],
+  title: 'Bill Kamanzi | Full-Stack Developer & Growth Marketer',
+  description: 'Full-stack developer and growth marketer based in Dubai. I build, ship, and scale web applications. Creator of ArbHunter and Cravd.',
+  keywords: ['Full-Stack Developer', 'Product Engineer', 'Growth Marketer', 'SEO Strategist', 'Performance Marketing', 'React Developer', 'Next.js Developer', 'Web Developer Dubai', 'Growth Engineer', 'SaaS', 'Data Science'],
   authors: [{ name: 'Bill Kamanzi' }],
   creator: 'Bill Kamanzi',
   icons: {
     icon: [
-      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.png', type: 'image/png' },
     ],
-    apple: '/favicon.svg',
+    apple: '/favicon.png',
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://bilkamanzi.com',
     siteName: 'Bill Kamanzi',
-    title: 'Bill Kamanzi | Product Builder',
-    description: 'I build products at the intersection of code, data, and marketing.',
+    title: 'Bill Kamanzi | Full-Stack Developer & Growth Marketer',
+    description: 'Full-stack developer and growth marketer based in Dubai. I build, ship, and scale web applications.',
     images: [
       {
         url: '/images/profile.png',
         width: 1200,
         height: 630,
-        alt: 'Bill Kamanzi',
+        alt: 'Bill Kamanzi - Full-Stack Developer and Growth Marketer',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Bill Kamanzi | Product Builder',
-    description: 'I build products at the intersection of code, data, and marketing.',
+    title: 'Bill Kamanzi | Full-Stack Developer & Growth Marketer',
+    description: 'Full-stack developer and growth marketer based in Dubai. I build, ship, and scale web applications.',
     images: ['/images/profile.png'],
   },
   robots: {
@@ -74,11 +84,45 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={satoshi.variable} suppressHydrationWarning>
+    <html lang="en" className={`${satoshi.variable} ${generalSans.variable}`} suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark')}})();`,
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'ProfilePage',
+              url: 'https://bilkamanzi.com',
+              name: 'Bill Kamanzi - Full-Stack Developer & Growth Marketer',
+              mainEntity: {
+                '@type': 'Person',
+                name: 'Bill Kamanzi',
+                jobTitle: 'Full-Stack Developer & Growth Marketer',
+                description: 'Full-stack developer and growth marketer based in Dubai who builds, ships, and scales web applications.',
+                url: 'https://bilkamanzi.com',
+                sameAs: [
+                  'https://www.linkedin.com/in/billkamanzi',
+                  'https://github.com/kb546',
+                  'https://x.com/billkamanzi',
+                  'https://www.instagram.com/billkamanzi',
+                ],
+                knowsAbout: [
+                  'Full-Stack Development',
+                  'Next.js',
+                  'React',
+                  'TypeScript',
+                  'SEO',
+                  'Performance Marketing',
+                  'Data Science',
+                  'Python',
+                ],
+              },
+            }),
           }}
         />
       </head>
