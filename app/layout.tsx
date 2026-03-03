@@ -74,7 +74,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={satoshi.variable}>
+    <html lang="en" className={satoshi.variable} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark')}})();`,
+          }}
+        />
+      </head>
       <body className="font-sans" suppressHydrationWarning>
         <a
           href="#main-content"

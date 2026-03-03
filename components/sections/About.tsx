@@ -1,6 +1,7 @@
 import Image from 'next/image'
-import { experience } from '@/lib/data/about'
+import { timelineData } from '@/lib/data/about'
 import AnimateOnScroll from '@/components/ui/AnimateOnScroll'
+import ExperienceTimeline from '@/components/sections/ExperienceTimeline'
 
 export default function About() {
   return (
@@ -48,24 +49,9 @@ export default function About() {
 
         {/* Experience */}
         <AnimateOnScroll className="mt-16">
-          <h3 className="text-lg font-bold text-text-primary mb-6">Experience</h3>
-          <div className="space-y-4">
-            {experience.map((exp) => (
-              <div
-                key={exp.id}
-                className="flex flex-col sm:flex-row sm:items-center justify-between py-3 border-b border-border"
-              >
-                <div>
-                  <p className="font-medium text-text-primary">{exp.title}</p>
-                  <p className="text-sm text-text-muted">{exp.company} · {exp.location}</p>
-                </div>
-                <p className="text-sm text-text-muted mt-1 sm:mt-0">
-                  {exp.startDate} — {exp.endDate}
-                </p>
-              </div>
-            ))}
-          </div>
+          <h3 className="text-lg font-bold text-text-primary mb-8">Experience</h3>
         </AnimateOnScroll>
+        <ExperienceTimeline entries={timelineData} />
       </div>
     </section>
   )

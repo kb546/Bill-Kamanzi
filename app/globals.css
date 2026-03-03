@@ -3,6 +3,34 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --color-bg: #FAFAFA;
+    --color-bg-surface: #FFFFFF;
+    --color-bg-hover: #F0F0F0;
+    --color-border: #E5E5E5;
+    --color-border-strong: #D4D4D4;
+    --color-accent: #3c71ec;
+    --color-accent-hover: #2b5ad4;
+    --color-accent-muted: rgba(60, 113, 236, 0.08);
+    --color-text-primary: #171717;
+    --color-text-secondary: #525252;
+    --color-text-muted: #737373;
+  }
+
+  :root.dark {
+    --color-bg: #111111;
+    --color-bg-surface: #1A1A1A;
+    --color-bg-hover: #222222;
+    --color-border: #2A2A2A;
+    --color-border-strong: #333333;
+    --color-accent: #3c71ec;
+    --color-accent-hover: #2b5ad4;
+    --color-accent-muted: rgba(60, 113, 236, 0.1);
+    --color-text-primary: #F5F5F5;
+    --color-text-secondary: #A0A0A0;
+    --color-text-muted: #666666;
+  }
+
   html {
     scroll-behavior: smooth;
   }
@@ -27,7 +55,8 @@
   }
 
   *:focus-visible {
-    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-bg rounded;
+    @apply outline-none ring-2 ring-accent ring-offset-2 rounded;
+    --tw-ring-offset-color: var(--color-bg);
   }
 
   .sr-only {

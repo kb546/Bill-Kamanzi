@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
+import ThemeToggle from '@/components/ui/ThemeToggle'
 
 const navItems = [
   { label: 'Projects', href: '#projects' },
@@ -42,6 +43,7 @@ export default function Header() {
               {item.label}
             </a>
           ))}
+          <ThemeToggle />
           <a
             href="mailto:bikamanzi@gmail.com"
             className="px-5 py-2 text-sm font-medium bg-accent text-white hover:bg-accent-hover transition-colors clip-corner-sm"
@@ -51,13 +53,16 @@ export default function Header() {
         </div>
 
         {/* Mobile toggle */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-text-secondary hover:text-text-primary"
-          aria-label="Toggle menu"
-        >
-          {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="text-text-secondary hover:text-text-primary"
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
       </nav>
 
       {/* Mobile menu */}
