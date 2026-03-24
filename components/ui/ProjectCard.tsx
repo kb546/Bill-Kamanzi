@@ -18,7 +18,7 @@ export default function ProjectCard({ project }: { project: Project }) {
             {project.logo && (
               <Image
                 src={project.logo}
-                alt=""
+                alt={`${project.title} logo`}
                 width={36}
                 height={36}
                 className="rounded object-contain flex-shrink-0"

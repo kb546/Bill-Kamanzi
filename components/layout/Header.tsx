@@ -33,7 +33,7 @@ export default function Header() {
         <Link href="/" className="flex items-center gap-2 z-10 hover:opacity-80 transition-opacity">
           <Image
             src="/images/profile-pic-bill.png"
-            alt=""
+            alt="Bill Kamanzi"
             width={32}
             height={32}
             className="rounded-full object-cover"

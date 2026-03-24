@@ -31,7 +31,7 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://bilkamanzi.com'),
+  metadataBase: new URL('https://www.bilkamanzi.com'),
   title: 'Bill Kamanzi | Full-Stack Developer & Growth Marketer',
   description: 'Full-stack developer and growth marketer based in Dubai. I build, ship, and scale web applications. Creator of ArbHunter and Cravd.',
   keywords: ['Full-Stack Developer', 'Product Engineer', 'Growth Marketer', 'SEO Strategist', 'Performance Marketing', 'React Developer', 'Next.js Developer', 'Web Developer Dubai', 'Growth Engineer', 'SaaS', 'Data Science'],
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://bilkamanzi.com',
+    url: 'https://www.bilkamanzi.com',
     siteName: 'Bill Kamanzi',
     title: 'Bill Kamanzi | Full-Stack Developer & Growth Marketer',
     description: 'Full-stack developer and growth marketer based in Dubai. I build, ship, and scale web applications.',
@@ -97,14 +97,14 @@ export default function RootLayout({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'ProfilePage',
-              url: 'https://bilkamanzi.com',
+              url: 'https://www.bilkamanzi.com',
               name: 'Bill Kamanzi - Full-Stack Developer & Growth Marketer',
               mainEntity: {
                 '@type': 'Person',
                 name: 'Bill Kamanzi',
                 jobTitle: 'Full-Stack Developer & Growth Marketer',
                 description: 'Full-stack developer and growth marketer based in Dubai who builds, ships, and scales web applications.',
-                url: 'https://bilkamanzi.com',
+                url: 'https://www.bilkamanzi.com',
                 sameAs: [
                   'https://www.linkedin.com/in/billkamanzi',
                   'https://github.com/kb546',
