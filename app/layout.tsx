@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     description: 'Full-stack developer and growth marketer based in Dubai. I build, ship, and scale web applications.',
     images: [
       {
-        url: '/images/profile.png',
+        url: '/images/site-icon-blue-bg.png',
         width: 1200,
         height: 630,
         alt: 'Bill Kamanzi - Full-Stack Developer and Growth Marketer',
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Bill Kamanzi | Full-Stack Developer & Growth Marketer',
     description: 'Full-stack developer and growth marketer based in Dubai. I build, ship, and scale web applications.',
-    images: ['/images/profile.png'],
+    images: ['/images/site-icon-blue-bg.png'],
   },
   robots: {
     index: true,
